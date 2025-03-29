@@ -5,14 +5,17 @@ import os
 import json
 import re
 import copy
-from openai.error import InvalidRequestError, RateLimitError, Timeout
 from utils import write_json, remove_asy_sections, math_type_mapping, mylogger
 from prompts import PROMPTS
-
+from groq import Groq
+import groq_utils
+from critique import CritiqueAgent
+from actor import ActorAgent
 
 class MathChat:
     def __init__(
         self,
+        # client,
         model,
         prompt_type="select",
         prompt_location="user",
@@ -20,18 +23,19 @@ class MathChat:
         max_round=10,
         max_invalid_q_per_step=3,
         n=1,
-        temperature=1,
+        # temperature=1,
         logger=None,
         use_cache=True,
         refine=False,
         config_list=None,
     ):
+        # self.groq_client = client
         self.max_round = max_round
         if prompt_type not in PROMPTS:
             raise ValueError(f"Tool {prompt_type} not supported, choose from {PROMPTS.keys()}")
 
         self.prompt_type = prompt_type
-        self.prompt_loaction = prompt_location
+        self.prompt_location = prompt_location
         self.prompt = PROMPTS[prompt_type]
         self.refine = refine
 
@@ -53,31 +57,49 @@ class MathChat:
         self.deafult_config = {
             "model": model,
             "messages": messages,
-            "n": n,  # n should be 1 for now
-            "temperature": temperature,
+            # "n": n,  # n should be 1 for now
+            # "temperature": temperature,
         }
 
         self.max_invalid_q_per_step = max_invalid_q_per_step
         self.use_cache = use_cache
         self.logger = logger
         self.config_list = config_list
+        self.model = model
+        # self.temperature = temperature
+
+        self.actor = ActorAgent(self.model)
+
+        # Critique uses the same model as math agent (Can change in future)
+        self.critique = CritiqueAgent(self.model)
 
     def make_conversation(self, problem, n=1, file_to_be_saved=None):
         # initialize the query handler
         proxy_agent = UserProxyAgent()
 
-        # initialize the conversation
-        config = copy.deepcopy(self.deafult_config)
-        problem_prompt = {
-            "role": "user",
-            "content": self.prompt + "\nProblem: " + remove_asy_sections(problem["problem"]),
-        }  # put prompt in user message
+        conversation_history = []
 
-        # if the prompt_location is set to system, then the prompt is already put in the system message in __init__,
-        # then we only need to put the problem in the user message
-        if self.prompt_loaction == "system":
-            problem_prompt = {"role": "user", "content": remove_asy_sections(problem["problem"])}
-        config["messages"].append(problem_prompt)
+        if self.prompt_location == "system":
+            conversation_history.append({"role": "system", "content": self.prompt})
+        
+        # Append problem statement as a user message if required
+        if self.prompt_location != "system":
+            conversation_history.append({"role": "user", "content": self.prompt + "\nProblem: " + remove_asy_sections(problem["problem"])})
+        else:
+            conversation_history.append({"role": "user", "content": remove_asy_sections(problem["problem"])})
+        
+        # # initialize the conversation
+        # config = copy.deepcopy(self.deafult_config)
+        # problem_prompt = {
+        #     "role": "user",
+        #     "content": self.prompt + "\nProblem: " + remove_asy_sections(problem["problem"]),
+        # }  # put prompt in user message
+
+        # # if the prompt_location is set to system, then the prompt is already put in the system message in __init__,
+        # # then we only need to put the problem in the user message
+        # if self.prompt_location == "system":
+        #     problem_prompt = {"role": "user", "content": remove_asy_sections(problem["problem"])}
+        # config["messages"].append(problem_prompt)
 
         # save a readable conversation in txt file
         def save_message_to_file(message):
@@ -86,8 +108,9 @@ class MathChat:
                     f.write(message)
                     f.flush()
 
-        seperate_line = "\n" + "-" * 40 + "\n"
-        save_message_to_file(f'Problem: {self.str_splitter(problem["problem"])}\n {seperate_line}')
+        separate_line = "\n" + "-" * 40 + "\n"
+        # save the conversation history to the file
+        save_message_to_file(f'Problem: {self.str_splitter(remove_asy_sections(problem["problem"]))}\n {separate_line}')
 
         # for additional refine process
         is_refine_process = False
@@ -99,99 +122,104 @@ class MathChat:
         response_with_ans = ""  # save the response with \box to get the answer
         rr = 0  # round
         total_completion_tokens = 0
+
+        is_approved_by_critique = False
         while rr < self.max_round:
             # 1. get the response from the assistant, handle exceptions
-            try:
-                if self.config_list is not None:
-                    raw_responses = oai.ChatCompletion.create(
-                        config_list=self.config_list, **config, use_cache=self.use_cache
-                    )
-                else:
-                    raw_responses = oai.ChatCompletion.create(None, **config, use_cache=self.use_cache)
-            except InvalidRequestError as e:
-                print(problem["type"], problem["problem_id"], str(e), flush=True)
-                save_message_to_file(str(e))
-                break
-            except (RateLimitError, Timeout):
-                print("Ratelimit or timeout, retrying...", flush=True)
+            actor_response = self.actor.generate_plan(remove_asy_sections(problem["problem"]), conversation_history)
+            save_message_to_file(f"assistant: {self.str_splitter(actor_response)}{separate_line}")
+            
+            # raw_responses = self.groq_client.chat.completions.create(
+            #     messages=config["messages"],
+            #     model=self.model,
+            #     temperature=self.temperature,
+            # )
+            # # print(raw_responses)
+            # total_completion_tokens += raw_responses.usage.completion_tokens
+        
+            # if raw_responses.usage.completion_tokens >= 8000:
+            #     error_str = "Use more than 8000 many tokens, breaking."
+            #     print(error_str)
+            #     save_message_to_file(error_str)
+            #     break
+
+            # responses = groq_utils.extract_text(raw_responses)
+
+            # save_message_to_file(f"assistant: {self.str_splitter(responses[0])}{seperate_line}")
+
+            # 2. Check if critique has given approval
+            if not is_approved_by_critique:
+                critique_response = self.critique.critique_plan(remove_asy_sections(problem["problem"]), actor_response)
+                save_message_to_file(f"critique: {self.str_splitter(critique_response)}{separate_line}")
+                if "plan approved" in critique_response.lower():
+                    print("PLAN APPROVED!")
+                    is_approved_by_critique = True
+                conversation_history.append({"role": "assistant", "content": actor_response})
+                conversation_history.append({"role": "user", "content": critique_response})
+                rr += 1
                 continue
-            try:
-                total_completion_tokens += raw_responses["usage"]["completion_tokens"]
-            except Exception:
-                pass
-            if raw_responses["usage"]["total_tokens"] >= 8000:
-                error_str = "Use more than 8000 many tokens, breaking."
-                print(error_str)
-                save_message_to_file(error_str)
-                break
+                
+            # 3. process response
+            conversation_history.append({"role": "assistant", "content": actor_response})
+            answer = get_answer(actor_response)
 
-            assert raw_responses != -1, "Error in getting response"
-            responses = oai.ChatCompletion.extract_text(raw_responses)
-            assert len(responses) == 1, "More than one response"  # right now we only use one response
-
-            # 2. process response
-            save_message_to_file(f"assistant: {self.str_splitter(responses[0])}{seperate_line}")
-            # token_used = raw_responses['usage']['total_tokens']
-
-            config["messages"].append({"role": "assistant", "content": responses[0]})
-            tmp_msg = ""
-
-            if get_answer(responses[0]) is not None and get_answer(responses[0]) != "":
-                tmp_msg, is_query_exist = proxy_agent.check_queries(responses[0])
+            if answer and answer != "":
+                proxy_agent = UserProxyAgent()
+                tmp_msg, is_query_exist = proxy_agent.check_queries(actor_response)
                 if not is_query_exist:
                     # if the assistant gives a valid reply and no more queries, stop the conversation
                     is_valid_reply = True
                     if not self.refine:  # if not refine, stop the conversation
-                        response_with_ans = responses[0]
-                        response_with_new_ans = responses[0]
+                        response_with_ans = actor_response
+                        response_with_new_ans = actor_response
                         break
                     elif not is_refine_process:  # if refine, start the refine process
-                        response_with_ans = responses[0]
+                        response_with_ans = actor_response
                         is_refine_process = True
-                        refine_message = "Please check your answer to make sure it meets conditions in the problem and you doesn't make any mistakes. If you find any mistake, please correct it and put the corrected answer in box. If you find no mistake, put previous answer in the box."
-                        config["messages"].append({"role": "user", "content": refine_message})
-                        save_message_to_file(
-                            "user: {a}{s}".format(a=config["messages"][-1]["content"], s=seperate_line)
-                        )
+                        refine_message = ("Please check your answer to ensure it meets the problem conditions and correct any mistakes. "
+                                          "If no mistakes are found, put the previous answer in the box.")
+                        conversation_history.append({"role": "user", "content": refine_message})
+                        save_message_to_file(f"user: {self.str_splitter(refine_message)}{separate_line}")
                         continue
                     else:  # if already in the refine process, then stop the conversation
-                        response_with_new_ans = responses[0]
+                        response_with_new_ans = actor_response
                         break
 
-            # 3. handle the response and get the query
-            query_response, is_query_sucess = proxy_agent.handle_query(responses[0])
+            # 4. handle the response and get the query
+            proxy_agent = UserProxyAgent()
+            query_response, is_query_success = proxy_agent.handle_query(actor_response)
             if len(query_response) > 2000:
-                # prevent long response by string length, 2000 chars -> around 500-1000 tokens
-                save_message_to_file(f"****: Replacing {query_response} ****\n")
-                query_response = "Your requested query response is too long. You might have made a mistake. Please revise your reasoning and query."
-                is_query_sucess = False
+                save_message_to_file("****: Replacing long query response****\n")
+                query_response = ("Your requested query response is too long. Please revise your reasoning "
+                                  "and simplify your query.")
+                is_query_success = False
 
-            if is_query_sucess:
-                query_response += tmp_msg  # add the query response from the previous step
-            config["messages"].append({"role": "user", "content": query_response})
+            if is_query_success:
+                conversation_history.append({"role": "user", "content": query_response})
+            else:
+                invalid_q += 1
+                if invalid_q >= self.max_invalid_q_per_step:
+                    skip_query_str = ("Please revisit the problem statement and your reasoning. "
+                                      "If you think this step is correct, solve it yourself and continue to the next step. "
+                                      "Otherwise, correct this step.")
+                    conversation_history.append({"role": "user", "content": skip_query_str})
+                    invalid_q = 0
+            save_message_to_file(f"user: {self.str_splitter(query_response)}{separate_line}")
 
-            invalid_q = 0 if is_query_sucess else invalid_q + 1
-            if invalid_q >= self.max_invalid_q_per_step:
-                assert config["messages"][-1]["role"] == "user", "The last message should be from user"
-                skip_query_str = "Please revisit the problem statement and your reasoning. If you think this step is correct, solve it yourself and continue the next step. Otherwise, correct this step."
-                config["messages"][-1]["content"] = skip_query_str
-                save_message_to_file(f"****: Replacing {query_response}****\n")
-                invalid_q = 0
-
-            save_message_to_file("user: {a}{s}".format(a=config["messages"][-1]["content"], s=seperate_line))
             if "Continue" in query_response:
                 rr -= 0.5
             rr += 1
         save_message_to_file("Solution: " + problem["solution"])
 
+        # print("SOLVED ONE PROBLEM")
         return {
             "total_completion_tokens": total_completion_tokens,
-            "valid_q_count": proxy_agent.valid_q_count,  # number of valid queries
-            "total_q_count": proxy_agent.total_q_count,
-            "is_valid_reply": is_valid_reply,  # whether the assistant can give a valid reply
-            "response_with_ans": response_with_ans,  # string instead of list
-            "response_with_new_ans": response_with_new_ans,  # string instead of list
-            "messages": config["messages"],
+            "valid_q_count": proxy_agent.valid_q_count if proxy_agent else 0,
+            "total_q_count": proxy_agent.total_q_count if proxy_agent else 0,
+            "is_valid_reply": is_valid_reply,
+            "response_with_ans": response_with_ans,
+            "response_with_new_ans": response_with_new_ans,
+            "messages": conversation_history,
             "round": min(rr + 1, self.max_round),
         }
 
@@ -264,7 +292,8 @@ class MathChat:
                 if problem["new_ans"] == problem["voted_answer"]:
                     problem["new_ans"] = "same"
                 self.logger.log(
-                    f'{problem["problem_id"]} : {bool(problem["is_correct"])} $ {problem["voted_answer"]} $ {problem["correct_ans"]} | {new_ans} $ {problem["round"]} $ (from previous run)'
+                    f'{problem["problem_id"]} : {bool(problem["is_correct"])} $ {problem["voted_answer"]} $ '
+                    f'{problem["correct_ans"]} | {new_ans} $ {problem["round"]} $ (from previous run)'
                 )
                 continue
 
@@ -297,7 +326,8 @@ class MathChat:
             # 4. continue to next problem
             correct_counts += problem["is_correct"]
             self.logger.log(
-                f'{problem["problem_id"]} : {bool(problem["is_correct"])} $ {problem["voted_answer"]} $ {problem["correct_ans"]} | {problem["new_ans"]} $ {problem["round"]} $'
+                f'{problem["problem_id"]} : {bool(problem["is_correct"])} $ {problem["voted_answer"]} $ '
+                f'{problem["correct_ans"]} | {problem["new_ans"]} $ {problem["round"]} $'
             )
 
         tp = problem_set[0]["type"]

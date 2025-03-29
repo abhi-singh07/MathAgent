@@ -3,6 +3,7 @@ import re
 import os
 import json
 import argparse
+from huggingface_hub import login
 
 math_type_mapping = {
     "Algebra": "algebra",
@@ -62,17 +63,31 @@ def load_fixed(category_to_load=None):
     return sep_cat
 
 
-def load_level5_math_test_each_category(samples_per_category=20, category_to_load=None):
+def load_level5_math_test_each_category(samples_per_category=20, category_to_load=[0, 1]):
     """
-    Load level 5 math problems from the testset of competition dataset.
-    Returns:
-        A list of list of problems. Each list of problems is of the same category.
+    Load level 5 math test from each category.
     """
+    try:
+        # Try to use token from environment variable if available
+        if "HF_TOKEN" in os.environ:
+            login(token=os.environ["HF_TOKEN"])
+        # Otherwise, try to use the token from a file
+        elif os.path.exists("huggingface.txt"):
+            with open("huggingface.txt", "r") as f:
+                token = f.read().strip()
+                login(token=token)
+        
+        data = datasets.load_dataset("qwedsacf/competition_math")
+        level_5_data = data["train"]
+    except Exception as e:
+        print(f"Error loading dataset: {str(e)}")
+        print("Please make sure you have a valid Hugging Face token in huggingface.txt or set as HF_TOKEN environment variable")
+        return []
+
     category_to_load = [i for i in range(7)] if not category_to_load or "all" in category_to_load else category_to_load
     category_to_load = [int(x) for x in category_to_load]
     seed = 41
-    data = datasets.load_dataset("competition_math")
-    test_data = data["test"].shuffle(seed=seed)
+    test_data = level_5_data.shuffle(seed=seed)
     sep_cate = []
     for i, category in enumerate(math_type_mapping.keys()):
         if i not in category_to_load:

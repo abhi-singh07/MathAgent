@@ -3,7 +3,8 @@ from flaml import oai
 from math_chat import MathChat
 import argparse
 from utils import mylogger, load_level5_math_test_each_category, load_fixed, random_sample_MATH
-
+from groq import Groq
+import openai
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Math mathchat_solver")
@@ -36,11 +37,16 @@ def parse_args():
 
 
 def pseudo_main(config_list):
+    # # 1. create groq client
+    # client = Groq()
+
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+
     # 2. args, settings and logger
     args = parse_args()
-    args.model = "gpt-4"
+    args.model = "o1"
     oai.ChatCompletion.request_timeout = 60 * 10  # 10 minutes
-    oai.ChatCompletion.set_cache(seed=args.seed, cache_path_root=args.cache_folder)
+    oai.ChatCompletion.set_cache(seed=args.seed, cache_path=args.cache_folder)
     logger = mylogger(os.path.join(args.folder, "log.txt"))
 
     # 3. load math dataset
@@ -69,7 +75,7 @@ def pseudo_main(config_list):
         prompt_type=args.prompt_type,
         sys_type=args.systype,
         max_round=args.max_round,
-        temperature=args.temperature,
+        # temperature=args.temperature,
         prompt_location=args.prompt_location,
         logger=logger,
         refine=args.refine,
