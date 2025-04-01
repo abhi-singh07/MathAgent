@@ -23,9 +23,15 @@ class ActorAgent:
 
     def generate_plan(self, problem_statement, conversation_history):
         messages = [
-            {"role": "system", "content": self.system_prompt},
-            {"role": "user", "content": f"Problem: {problem_statement}"}
+            {"role": "system", "content": self.system_prompt}
         ]
+
+        # Append conversation history if available
+        if conversation_history:
+            messages.extend(conversation_history)
+
+        # Append the new problem statement
+        messages.append({"role": "user", "content": problem_statement})
 
         response = openai.ChatCompletion.create(
             model=self.model,
