@@ -71,7 +71,9 @@ class MathChat:
         self.actor = ActorAgent(self.model)
 
         # Critique uses the same model as math agent (Can change in future)
-        self.critique = CritiqueAgent(self.model)
+        self.critique1 = CritiqueAgent(self.model)
+        self.critique2 = CritiqueAgent(self.model)
+        self.critique3 = CritiqueAgent(self.model)
 
     def make_conversation(self, problem, n=1, file_to_be_saved=None):
         # initialize the query handler
@@ -124,9 +126,12 @@ class MathChat:
         total_completion_tokens = 0
 
         is_approved_by_critique = False
+
+        cleaned_problem = remove_asy_sections(problem["problem"])
+
         while rr < self.max_round:
             # 1. get the response from the assistant, handle exceptions
-            actor_response = self.actor.generate_plan(remove_asy_sections(problem["problem"]), conversation_history)
+            actor_response = self.actor.generate_plan(cleaned_problem, conversation_history)
             save_message_to_file(f"assistant: {self.str_splitter(actor_response)}{separate_line}")
             
             # raw_responses = self.groq_client.chat.completions.create(
@@ -147,15 +152,29 @@ class MathChat:
 
             # save_message_to_file(f"assistant: {self.str_splitter(responses[0])}{seperate_line}")
 
-            # 2. Check if critique has given approval
+            # 2. Check if the critiques have given approval
             if not is_approved_by_critique:
-                critique_response = self.critique.critique_plan(remove_asy_sections(problem["problem"]), actor_response)
-                save_message_to_file(f"critique: {self.str_splitter(critique_response)}{separate_line}")
-                if "plan approved" in critique_response.lower():
+                critique_approvals = 0
+                critique_responses = []
+                
+                for i, critique_agent in enumerate([self.critique1, self.critique2, self.critique3]):
+                    critique_response = critique_agent.critique_plan(cleaned_problem, actor_response)
+                    critique_responses.append(critique_response)
+                    save_message_to_file(f"critique: {self.str_splitter(critique_response)}{separate_line}")
+                    if "plan approved" in critique_response.lower():
+                        print(f"Plan Approved by Critic {i}")
+                        critique_approvals += 1
+                    else:
+                        print(f"Plan Rejected by Critic {i}")
+                
+                if critique_approvals > 1:
                     print("PLAN APPROVED!")
                     is_approved_by_critique = True
+                
                 conversation_history.append({"role": "assistant", "content": actor_response})
-                conversation_history.append({"role": "user", "content": critique_response})
+                for critique_response in critique_responses:
+                    conversation_history.append({"role": "user", "content": critique_response})
+
                 rr += 1
                 continue
                 
