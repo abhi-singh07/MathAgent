@@ -162,14 +162,15 @@ class MathChat:
                     critique_responses.append(critique_response)
                     save_message_to_file(f"critique: {self.str_splitter(critique_response)}{separate_line}")
                     if "plan approved" in critique_response.lower():
-                        print(f"Plan Approved by Critic {i}")
+                        print(f"Plan Approved by Critic {i+1}")
                         critique_approvals += 1
                     else:
-                        print(f"Plan Rejected by Critic {i}")
+                        print(f"Plan Rejected by Critic {i+1}")
                 
-                if critique_approvals > 1:
-                    print("PLAN APPROVED!")
-                    is_approved_by_critique = True
+                    if critique_approvals > 1:
+                        print("PLAN APPROVED!")
+                        is_approved_by_critique = True
+                        break
                 
                 conversation_history.append({"role": "assistant", "content": actor_response})
                 for critique_response in critique_responses:
