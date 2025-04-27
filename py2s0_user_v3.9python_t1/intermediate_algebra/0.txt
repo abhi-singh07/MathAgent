@@ -1,0 +1,502 @@
+Problem: The graph of the rational function $\frac{p(x)}{q(x)}$ is shown below, with a horizontal asymptote of $y = 0$ and a vertical asymptote of $ x=-1 $. If $q(x)$ is quadratic, $p(2)=1$, and $q(2) = 3$, find $p(x) + q(x).$
+
+ 
+----------------------------------------
+assistant: <think>
+Okay, so I need to figure out how to solve this problem about a rational function. Let me read it again carefully.
+
+The problem says: The graph of the rational function p(x)/q(x) is shown below, with a horizontal asymptote of y = 0 and a vertical asymptote at x = -1. If q(x) is quadratic,
+p(2) = 1, and q(2) = 3, find p(x) + q(x).
+
+Hmm, since I don't have the graph, I need to rely on the given information. Let me note down the key points:
+
+1. The function is a rational function, meaning it's a ratio of two polynomials p(x) over q(x).
+2. The horizontal asymptote is y = 0. I remember
+that the horizontal asymptote depends on the degrees of the numerator and denominator. If the degree of the numerator is less than the degree of the denominator, the horizontal asymptote is y = 0. So that tells me that the degree of p(x) is less than the degree of q(x). Since q(x) is quadratic, it's
+degree 2, so p(x) must be degree 1 or 0.
+3. There's a vertical asymptote at x = -1. Vertical asymptotes occur where the denominator is zero (provided the numerator isn't also zero there). So q(-1) = 0, meaning (x + 1) is a factor of q(x).
+4. We also have p(2) = 1 and q(2) = 3. These will help us
+find the specific coefficients once we set up the equations.
+
+Since q(x) is quadratic and has a vertical asymptote at x = -1, let's write q(x) as:
+
+q(x) = a(x + 1)(x - b)
+
+But wait, since it's quadratic, it can have at most two real roots. We know one root is x = -1, so the other root can be
+something else. However, if the graph only shows one vertical asymptote, maybe the other root is not a real number? Or perhaps it's a repeated root? Hmm, but if it's a quadratic, it can have two real roots or two complex roots. Since it's given as quadratic, I think it's safe to assume that it
+factors into (x + 1)(x - c), where c is another real number.
+
+But wait, the horizontal asymptote is y = 0, so p(x) must be linear or constant. Let's assume p(x) is linear because if it's constant, it might be simpler, but let's check both possibilities.
+
+Let me outline the steps I think I should
+take:
+
+1. Determine the general form of p(x) and q(x) based on the given asymptotes and degrees.
+2. Use the given points p(2) = 1 and q(2) = 3 to set up equations.
+3. Solve these equations to find the coefficients of p(x) and q(x).
+4. Add p(x) and q(x) to get the final answer.
+
+Starting with step 1:
+Since the horizontal asymptote is y = 0, as I noted, the degree of p(x) is less than the degree of q(x). Since q(x) is quadratic (degree 2), p(x) must be linear (degree 1) or constant (degree 0). Let's assume p(x) is linear because if it's constant, we might not have enough information, but let's
+see.
+
+So, let me define:
+
+p(x) = mx + n
+
+q(x) = a(x + 1)(x - c) = a(x^2 + (1 - c)x - c)
+
+But since q(x) is quadratic, and we have a vertical asymptote at x = -1, and possibly another at x = c. Wait, but the problem only mentions one vertical asymptote. Hmm, maybe the other root is a hole? Or maybe
+the function touches the x-axis there? Wait, no, because vertical asymptotes only occur where the denominator is zero and the numerator isn't. So if q(x) has another root, say x = c, but p(c) is not zero, then there would be another vertical asymptote at x = c. But the problem only mentions one
+vertical asymptote at x = -1. That suggests that either x = c is also a root of p(x), making it a hole, or q(x) has a repeated root at x = -1, making it a double root.
+
+Wait, but if q(x) has a double root at x = -1, then q(x) = a(x + 1)^2. Then p(x) would have to not have (x + 1) as a factor,
+otherwise, it would be a hole. But let me check the horizontal asymptote again. If p(x) is degree 1 and q(x) is degree 2, the horizontal asymptote is y = 0, which matches.
+
+So, two possibilities for q(x):
+
+Case 1: q(x) has two distinct roots, x = -1 and x = c, but p(x) also has a root at x = c,
+making it a hole. However, the problem doesn't mention any holes, so maybe that's not the case.
+
+Case 2: q(x) has a double root at x = -1, so q(x) = a(x + 1)^2.
+
+Let me consider Case 2 first because it's simpler. If q(x) = a(x + 1)^2, then p(x) is linear: p(x) = mx + n.
+
+Now, let's use the given
+points: p(2) = 1 and q(2) = 3.
+
+First, compute q(2):
+
+q(2) = a(2 + 1)^2 = a*(3)^2 = 9a
+
+Given that q(2) = 3, so 9a = 3 → a = 3/9 = 1/3.
+
+So q(x) = (1/3)(x + 1)^2.
+
+Now, p(2) = 1. Since p(x) = mx + n, plugging in x=2:
+
+1 = 2m + n.
+
+We need another equation to find m and n. But we don't have another
+point. However, we can consider the behavior of the function. Since there's a horizontal asymptote at y=0, and the function tends to 0 as x approaches infinity, but that doesn't give us specific values. Alternatively, maybe the function passes through another point, but since we don't have the
+graph, we can't know.
+
+Wait, but perhaps we can assume that the function has a certain behavior, like maybe it crosses the x-axis at some point. If p(x) is linear, it will cross the x-axis unless it's a constant function. But if p(x) is linear and q(x) is quadratic, the function can have an
+x-intercept where p(x) = 0. However, without more information, I can't determine m and n uniquely. So maybe my assumption that q(x) has a double root is incorrect, and I need to consider that q(x) has two distinct roots, one at x=-1 and another at x=c, but p(x) doesn't have that root, leading to
+another vertical asymptote. But the problem only mentions one vertical asymptote, so that can't be.
+
+Wait, maybe I made a mistake. Let me think again. The problem says there's a vertical asymptote at x = -1, but it doesn't say there's only one. So maybe there are more, but the graph shows only one,
+but perhaps the other is not in the shown part. However, the problem statement doesn't specify, so I have to go with the information given. Therefore, I think the safer assumption is that q(x) has a double root at x=-1, making q(x) = a(x +1)^2, and p(x) is linear.
+
+But then, with p(2)=1, we have 2m
++ n =1, but we need another equation. Wait, maybe I can consider the limit as x approaches infinity. Since the horizontal asymptote is y=0, the ratio of leading coefficients is 0. The leading term of p(x) is mx, and q(x) is a(x^2). So as x approaches infinity, p(x)/q(x) ~ mx / (a x^2) = m/(a x) → 0,
+which is consistent. So that doesn't give me new info.
+
+Alternatively, maybe I can assume that the function passes through a certain point, but without the graph, I can't know. So perhaps I need to consider that p(x) is a constant function. Let me explore that.
+
+If p(x) is constant, say p(x) = k,
+then since p(2)=1, k=1. So p(x)=1.
+
+Then q(x) is quadratic with a vertical asymptote at x=-1, so q(x)=a(x+1)(x - c). But we also have q(2)=3.
+
+So q(2) = a(2+1)(2 - c) = 3a(2 - c) =3.
+
+So 3a(2 - c)=3 → a(2 - c)=1.
+
+But we need another equation to find a and c. However, since p(x) is constant, the
+horizontal asymptote is y=0, which is given, so that's consistent. But without more info, I can't find a and c. So maybe p(x) is linear.
+
+Wait, maybe I need to consider both possibilities: p(x) linear and p(x) constant. Let's see.
+
+If p(x) is constant, p(x)=1. Then q(x)=a(x+1)(x - c). We have
+q(2)=3.
+
+So 3a(2 - c)=3 → a(2 - c)=1.
+
+But we have two variables, a and c, so we can't solve further. So perhaps p(x) is linear.
+
+Alternatively, maybe the function has an x-intercept at some point, but without the graph, I can't know. So perhaps I need to make another assumption.
+
+Wait, maybe the
+function has a y-intercept. If I can find the y-intercept, that would give me another equation. The y-intercept occurs at x=0, so the value is p(0)/q(0). Let's denote this as b. So b = p(0)/q(0). But without knowing b, I can't proceed.
+
+Alternatively, perhaps the function has a slant asymptote, but
+no, the horizontal asymptote is y=0, so that's already given.
+
+Wait, I'm stuck. Let me try to think differently. Since q(x) is quadratic, and p(x) is linear, let's write them as:
+
+p(x) = mx + n
+
+q(x) = a(x +1)(x - c) = a(x^2 + (1 - c)x - c)
+
+We have q(2)=3:
+
+q(2) = a(2 +1)(2 - c) = 3a(2 - c) =3 →
+a(2 - c)=1.
+
+We also have p(2)=1: 2m +n=1.
+
+We need more equations. Since p(x) is linear and q(x) is quadratic, perhaps the function has an x-intercept where p(x)=0. Let's say the x-intercept is at x = k, so p(k)=0. Then k = -n/m.
+
+But without knowing k, I can't proceed. Alternatively, maybe the
+function has a y-intercept at (0, b), so b = p(0)/q(0) = n/(a(1)(-c)) = n/( -a c).
+
+But again, without knowing b, I can't find more.
+
+Wait, maybe I can use the fact that the function simplifies to p(x)/q(x) and consider that as x approaches infinity, the function approaches 0, which we already
+considered. Alternatively, maybe I can consider the derivative or something, but that might complicate.
+
+Alternatively, maybe I can assume that the function has a hole at some point, but without the graph, I can't know.
+
+Wait, perhaps I need to consider that q(x) has a double root at x=-1, making
+q(x)=a(x+1)^2. Then, p(x) is linear: p(x)=mx +n.
+
+We have q(2)=3: q(2)=a(3)^2=9a=3 → a=1/3.
+
+So q(x)=(1/3)(x+1)^2.
+
+Now, p(x)=mx +n, and p(2)=1: 2m +n=1.
+
+But we need another equation. Since p(x) is linear, and q(x) is quadratic, the function p(x)/q(x) will have a horizontal asymptote at y=0, which
+is given. But without another point, I can't find m and n.
+
+Wait, maybe the function has a y-intercept. Let's compute the y-intercept by setting x=0:
+
+f(0) = p(0)/q(0) = n / [(1/3)(1)^2] = n / (1/3) = 3n.
+
+But we don't know what f(0) is. So unless we can find f(0) from the graph, which we don't
+have, we can't determine n.
+
+Hmm, I'm stuck again. Maybe I need to consider that the function has a certain number of turning points or something, but without the graph, it's hard.
+
+Wait, perhaps I should consider that since the horizontal asymptote is y=0, and the function tends to 0 as x
+approaches infinity, the leading coefficients must satisfy that the degree of p is less than q, which we already have. So maybe I can express p(x) in terms of q(x) or vice versa.
+
+Alternatively, maybe I can assume that the function has a certain number of zeros. If p(x) is linear, it can have one
+zero. Let's say the function crosses the x-axis at x = k, so p(k)=0. Then k = -n/m.
+
+But without knowing k, I can't find m and n.
+
+Wait, maybe I can assume that the function is in its simplest form, so p(x) and q(x) have no common factors. Since q(x) has a double root at x=-1, if p(x) also had a
+root at x=-1, then we'd have a hole, but we don't have that information.
+
+Alternatively, perhaps I can set up the equations with the given information and see if I can express p(x) + q(x) in terms of a and c, but I'm not sure.
+
+Wait, let's try to write down what we have:
+
+If q(x) = a(x +1)^2, then
+a=1/3.
+
+So q(x) = (1/3)(x +1)^2.
+
+Then p(x) = mx +n, with 2m +n=1.
+
+We need another equation. Since we don't have more points, maybe I can assume that the function has a certain behavior, like passing through (1,0), but that would mean p(1)=0, so m +n=0. Then we'd have:
+
+From p(2)=1: 2m +n=1
+
+From
+p(1)=0: m +n=0
+
+Subtracting the second equation from the first: m=1, then n=-1.
+
+So p(x)=x -1.
+
+Then p(x) + q(x) = x -1 + (1/3)(x +1)^2.
+
+But is this assumption valid? I assumed that p(1)=0, but without the graph, I can't be sure. So maybe that's not the right approach.
+
+Alternatively, maybe I can
+consider that the function has a certain value at x=0, but without knowing, it's hard.
+
+Wait, perhaps I can use the fact that the function has a vertical asymptote at x=-1 and a horizontal asymptote at y=0, and that's all. So maybe the function is as simple as possible, with p(x) being linear and
+q(x) having a double root.
+
+So let's proceed with q(x) = (1/3)(x +1)^2 and p(x)=mx +n, with 2m +n=1.
+
+But we need another condition. Since we don't have more points, perhaps the simplest case is that p(x) is as simple as possible. Let's assume that p(x) has integer coefficients. Then, perhaps m and
+n are integers.
+
+So 2m +n=1. Let's try m=1, then n= -1. So p(x)=x -1.
+
+Alternatively, m=0, then n=1, so p(x)=1.
+
+But if p(x)=1, then p(x)/q(x) = 1 / [(1/3)(x +1)^2] = 3/(x +1)^2. That's a possible function. Let's see if that fits.
+
+But then, does this function have any x-intercepts? No, because
+p(x)=1 is never zero. So the graph would have a horizontal asymptote at y=0 and a vertical asymptote at x=-1, which matches the problem statement. Also, p(2)=1 and q(2)=3, which fits.
+
+So maybe p(x)=1 and q(x)=(1/3)(x +1)^2.
+
+Then p(x) + q(x) =1 + (1/3)(x +1)^2.
+
+But let's check if that's the case.
+Let me compute p(2)=1 and q(2)= (1/3)(3)^2=3, which matches.
+
+Alternatively, if p(x)=x -1, then p(2)=1, which is correct, and q(x)= (1/3)(x +1)^2. Then p(x) + q(x)=x -1 + (1/3)(x^2 +2x +1)=x -1 + (1/3)x^2 + (2/3)x +1/3= (1/3)x^2 + (5/3)x -2/3.
+
+But without knowing more about the graph, I can't
+determine which is correct. So perhaps the problem expects us to assume that p(x) is constant.
+
+Wait, but the problem says that q(x) is quadratic, and p(x) is a polynomial, but doesn't specify its degree. However, since the horizontal asymptote is y=0, p(x) must be of lower degree than q(x), so p(x)
+can be constant or linear.
+
+If p(x) is constant, then p(x)=1, and q(x)= (1/3)(x +1)^2.
+
+So p(x) + q(x)=1 + (1/3)(x^2 +2x +1)=1 + (1/3)x^2 + (2/3)x +1/3= (1/3)x^2 + (2/3)x +4/3.
+
+Alternatively, if p(x) is linear, p(x)=x -1, then p(x) + q(x)=x -1 + (1/3)(x +1)^2.
+
+But without more information, I can't
+decide. However, the problem gives us that p(2)=1 and q(2)=3, which are specific values, but without more points, it's hard to determine.
+
+Wait, maybe I can consider that the function has no x-intercepts, which would mean p(x) is constant. Because if p(x) is linear, it would cross the x-axis
+somewhere, but the problem doesn't mention that. So perhaps p(x) is constant.
+
+Therefore, I think p(x)=1 and q(x)=(1/3)(x +1)^2.
+
+So p(x) + q(x)=1 + (1/3)(x^2 +2x +1)= (1/3)x^2 + (2/3)x +4/3.
+
+But to express this as a single polynomial, let's combine the terms:
+
+(1/3)x^2 + (2/3)x
++4/3.
+
+Alternatively, factor out 1/3:
+
+(1/3)(x^2 +2x +4).
+
+But let me check:
+
+Wait, 1 + (1/3)(x^2 +2x +1) =1 + (x^2)/3 + (2x)/3 +1/3= (x^2)/3 + (2x)/3 +1 +1/3= (x^2)/3 + (2x)/3 +4/3.
+
+Yes, that's correct.
+
+But let me think again: if p(x) is constant, then p(x)=1, and q(x)= (1/3)(x +1)^2. Then p(x) +
+q(x)=1 + (1/3)(x +1)^2.
+
+But perhaps the problem expects p(x) to be linear. Let me see which assumption leads to a consistent answer.
+
+Alternatively, maybe I should consider that q(x) has two distinct roots, one at x=-1 and another at x=c, but p(x) doesn't have that root, leading to another vertical
+asymptote, but the problem only mentions one. So that can't be.
+
+Therefore, I think the correct approach is to assume that q(x) has a double root at x=-1, making q(x)= (1/3)(x +1)^2, and p(x)=1.
+
+Thus, p(x) + q(x)=1 + (1/3)(x +1)^2.
+
+But to write this as a single polynomial, let's expand it:
+
+1 +
+(1/3)(x^2 +2x +1)=1 + (x^2)/3 + (2x)/3 +1/3= (x^2)/3 + (2x)/3 +4/3.
+
+So the final answer is (x^2 +2x +4)/3.
+
+But let me check the degrees: p(x) is constant (degree 0), q(x) is quadratic (degree 2), so p(x) + q(x) is quadratic, which makes sense.
+
+Alternatively, if p(x) is linear, then p(x) + q(x)
+would be quadratic plus linear, which is quadratic, but with different coefficients.
+
+But without more information, I think the assumption that p(x) is constant is acceptable because the problem doesn't specify any x-intercepts.
+
+Therefore, I think the answer is (x^2 +2x +4)/3.
+
+Wait, but let me
+double-check:
+
+If p(x)=1 and q(x)= (1/3)(x +1)^2, then p(2)=1, which is correct, and q(2)= (1/3)(9)=3, which is also correct.
+
+Yes, that fits all the given conditions.
+
+So p(x) + q(x)=1 + (1/3)(x +1)^2= (x^2 +2x +4)/3.
+
+Therefore, the final answer is (x² + 2x + 4)/3.
+
+But wait, let me make sure I
+didn't make a mistake in expanding:
+
+(x +1)^2 =x² +2x +1.
+
+Multiply by 1/3: (x² +2x +1)/3.
+
+Add 1: 1 + (x² +2x +1)/3= (3 +x² +2x +1)/3= (x² +2x +4)/3.
+
+Yes, that's correct.
+
+So the final answer is (x² +2x +4)/3.
+
+But the problem asks for p(x) + q(x). So in polynomial form, it's (1/3)x² + (2/3)x
++4/3.
+
+Alternatively, factored as (x² +2x +4)/3.
+
+Yes, that seems right.
+</think>
+
+To solve the problem, we start by noting the given information and deducing the forms of p(x) and q(x). The rational function has a horizontal asymptote at y=0, indicating that the degree of p(x) is less than that of
+q(x). Since q(x) is quadratic, p(x) must be linear or constant. The vertical asymptote at x=-1 tells us that (x+1) is a factor of q(x). Given that q(x) is quadratic, we consider it as having a double root at x=-1, making q(x) = a(x+1)². Using q(2)=3, we find a=1/3. Assuming p(x) is constant (since
+no x-intercept is mentioned), p(x)=1. Thus, p(x)+q(x) is calculated and simplified.
+
+**Step-by-Step Explanation:**
+
+1. **Identify Degrees and Asymptotes:**
+   - Horizontal asymptote y=0 ⇒ degree of p(x) < degree of q(x).
+   - q(x) is quadratic ⇒ degree 2, so p(x) is linear or constant.
+
+2.
+**Determine q(x):**
+   - Vertical asymptote at x=-1 ⇒ (x+1) is a factor.
+   - Since q(x) is quadratic, assume double root: q(x) = a(x+1)².
+
+3. **Use q(2)=3 to find a:**
+   - q(2) = a(3)² = 9a =3 ⇒ a=1/3.
+   - Thus, q(x) = (1/3)(x+1)².
+
+4. **Determine p(x):**
+   - Given p(2)=1. Assume p(x) is
+constant (since no x-intercept is given).
+   - Therefore, p(x)=1.
+
+5. **Compute p(x) + q(x):**
+   - p(x) + q(x) =1 + (1/3)(x² + 2x +1).
+   - Simplify: (1/3)x² + (2/3)x +4/3.
+
+**Answer:**
+\boxed{\dfrac{x^2 + 2x + 4}{3}}
+----------------------------------------
+critique: 
+
+To address the problem, we need to determine the polynomials \( p(x) \) and \( q(x) \) given the conditions. Here's a structured plan to solve it:
+
+1. **Identify Degrees and Asymptotes:**
+   - The horizontal asymptote \( y = 0 \) indicates that the degree of \( p(x) \) is less than the degree of
+\( q(x) \). Since \( q(x) \) is quadratic (degree 2), \( p(x) \) must be linear (degree 1) or constant (degree 0).
+   - The vertical asymptote at \( x = -1 \) implies that \( (x + 1) \) is a factor of \( q(x) \).
+
+2. **Determine \( q(x) \):**
+   - Given that \( q(x) \) is quadratic and has a
+vertical asymptote at \( x = -1 \), we consider it having a double root at \( x = -1 \). Thus, \( q(x) = a(x + 1)^2 \).
+
+3. **Use \( q(2) = 3 \) to find \( a \):**
+   - Substitute \( x = 2 \) into \( q(x) \):
+     \[
+     q(2) = a(2 + 1)^2 = 9a = 3 \implies a = \frac{1}{3}
+     \]
+   - Therefore, \(
+q(x) = \frac{1}{3}(x + 1)^2 \).
+
+4. **Determine \( p(x) \):**
+   - Given \( p(2) = 1 \), assume \( p(x) \) is constant since no x-intercept is mentioned. Thus, \( p(x) = 1 \).
+
+5. **Compute \( p(x) + q(x) \):**
+   - Expand and combine the polynomials:
+     \[
+     p(x) + q(x) = 1 + \frac{1}{3}(x^2 +
+2x + 1) = \frac{1}{3}x^2 + \frac{2}{3}x + \frac{4}{3}
+     \]
+   - Combine the terms into a single fraction:
+     \[
+     p(x) + q(x) = \frac{x^2 + 2x + 4}{3}
+     \]
+
+**Answer:**
+\[
+\boxed{\dfrac{x^2 + 2x + 4}{3}}
+\]
+
+Plan Approved. You may start solving the problem.
+----------------------------------------
+critique: 
+
+To solve the problem, we start by noting the given information and deducing the forms of \( p(x) \) and \( q(x) \). The rational function has a horizontal asymptote at \( y=0 \), indicating that the degree of \( p(x) \) is less than that of \( q(x) \). Since \( q(x) \) is quadratic, \( p(x) \)
+must be linear or constant. The vertical asymptote at \( x=-1 \) tells us that \( (x+1) \) is a factor of \( q(x) \). Given that \( q(x) \) is quadratic, we consider it as having a double root at \( x=-1 \), making \( q(x) = a(x+1)^2 \). Using \( q(2)=3 \), we find \( a=1/3 \). Assuming \( p(x) \)
+is constant (since no x-intercept is mentioned), \( p(x)=1 \). Thus, \( p(x)+q(x) \) is calculated and simplified.
+
+**Step-by-Step Explanation:**
+
+1. **Identify Degrees and Asymptotes:**
+   - Horizontal asymptote \( y=0 \) implies the degree of \( p(x) \) is less than the degree of \( q(x) \).
+   -
+\( q(x) \) is quadratic, so \( p(x) \) is linear or constant.
+
+2. **Determine \( q(x) \):**
+   - Vertical asymptote at \( x=-1 \) implies \( (x+1) \) is a factor.
+   - Since \( q(x) \) is quadratic, assume a double root: \( q(x) = a(x+1)^2 \).
+
+3. **Use \( q(2)=3 \) to find \( a \):**
+   - \( q(2) =
+a(3)^2 = 9a =3 \) ⇒ \( a=1/3 \).
+   - Thus, \( q(x) = \frac{1}{3}(x+1)^2 \).
+
+4. **Determine \( p(x) \):**
+   - Given \( p(2)=1 \). Assume \( p(x) \) is constant (since no x-intercept is given).
+   - Therefore, \( p(x)=1 \).
+
+5. **Compute \( p(x) + q(x) \):**
+   - \( p(x) + q(x) =1 + \frac{1}{3}(x^2
++ 2x +1) \).
+   - Simplify: \( \frac{1}{3}x^2 + \frac{2}{3}x + \frac{4}{3} \).
+
+**Answer:**
+\[
+\boxed{\dfrac{x^2 + 2x + 4}{3}}
+\]
+
+**Feedback:**
+
+The plan is well-structured, logical, and complete. The assistant correctly identified the degrees of the polynomials based on the asymptotes,
+appropriately assumed the form of \( q(x) \) with a double root, and used the given points to determine the coefficients. The assumption that \( p(x) \) is constant is reasonable given the lack of information about x-intercepts. The calculations are correct, and the final answer is properly
+simplified.
+
+**Plan Approved. You may start solving the problem.**
+----------------------------------------
+assistant: 
+
+To solve the problem, we start by noting the given information and deducing the forms of \( p(x) \) and \( q(x) \). The rational function has a horizontal asymptote at \( y=0 \), indicating that the degree of \( p(x) \) is less than that of \( q(x) \). Since \( q(x) \) is quadratic, \( p(x) \)
+must be linear or constant. The vertical asymptote at \( x=-1 \) tells us that \( (x+1) \) is a factor of \( q(x) \). Given that \( q(x) \) is quadratic, we consider it as having a double root at \( x=-1 \), making \( q(x) = a(x+1)^2 \). Using \( q(2)=3 \), we find \( a=1/3 \). Assuming \( p(x) \)
+is constant (since no x-intercept is mentioned), \( p(x)=1 \). Thus, \( p(x)+q(x) \) is calculated and simplified.
+
+**Step-by-Step Explanation:**
+
+1. **Identify Degrees and Asymptotes:**
+   - The horizontal asymptote \( y=0 \) implies that the degree of \( p(x) \) is less than the degree of \( q(x)
+\). Since \( q(x) \) is quadratic (degree 2), \( p(x) \) must be linear (degree 1) or constant (degree 0).
+   - The vertical asymptote at \( x=-1 \) implies that \( (x + 1) \) is a factor of \( q(x) \).
+
+2. **Determine \( q(x) \):**
+   - Given that \( q(x) \) is quadratic and has a vertical
+asymptote at \( x = -1 \), we consider it having a double root at \( x = -1 \). Thus, \( q(x) = a(x + 1)^2 \).
+
+3. **Use \( q(2) = 3 \) to find \( a \):**
+   - Substitute \( x = 2 \) into \( q(x) \):
+     \[
+     q(2) = a(2 + 1)^2 = 9a = 3 \implies a = \frac{1}{3}
+     \]
+   - Therefore, \( q(x) =
+\frac{1}{3}(x + 1)^2 \).
+
+4. **Determine \( p(x) \):**
+   - Given \( p(2) = 1 \), assume \( p(x) \) is constant since no x-intercept is mentioned. Thus, \( p(x) = 1 \).
+
+5. **Compute \( p(x) + q(x) \):**
+   - Expand and combine the polynomials:
+     \[
+     p(x) + q(x) = 1 + \frac{1}{3}(x^2 + 2x +
+1) = \frac{1}{3}x^2 + \frac{2}{3}x + \frac{4}{3}
+     \]
+   - Combine the terms into a single fraction:
+     \[
+     p(x) + q(x) = \frac{x^2 + 2x + 4}{3}
+     \]
+
+**Answer:**
+\[
+\boxed{\dfrac{x^2 + 2x + 4}{3}}
+\]
+----------------------------------------
+Solution: Since $q(x)$ is a quadratic, and we have a horizontal asymptote at $y=0,$ we know that $p(x)$ must be linear.
+
+Since we have a hole at $x=1,$ there must be a factor of $x-1$ in both $p(x)$ and $q(x).$ Additionally, since there is a vertical asymptote at $x=-1,$ the denominator $q(x)$ must have a factor of $x+1.$ Then, $p(x) = a(x-1)$ and $q(x) = b(x+1)(x-1),$ for some constants $a$ and $b.$
+
+Since $p(2) = 1$, we have $a(2-1) = 1$ and hence $a=1$. Since $q(2) = 3$, we have $b(2+1)(2-1) = 3$ and hence $b=1$.
+
+So $p(x) = x - 1$ and $q(x) = (x + 1)(x - 1) = x^2 - 1,$ so $p(x) + q(x) = \boxed{x^2 + x - 2}.$

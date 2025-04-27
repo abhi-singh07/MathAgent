@@ -5,10 +5,10 @@ from flaml import oai
 import openai
 
 class ActorAgent:
-    def __init__(self, model, temperature=0.5):
-        # self.client = client
+    def __init__(self, model, client, temperature=0.5):
+        self.client = client
         self.model = model
-        # self.temperature = temperature
+        self.temperature = temperature
         self.system_prompt = str(
             """
             You are an innovative math problem solver tasked with creating a detailed plan to solve the provided math problem.
@@ -33,9 +33,9 @@ class ActorAgent:
         # Append the new problem statement
         messages.append({"role": "user", "content": problem_statement})
 
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completions.create(
             model=self.model,
             messages=messages,
-            # temperature=self.temperature,
+            temperature=self.temperature
         )
         return response.choices[0].message.content

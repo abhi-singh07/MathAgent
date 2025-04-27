@@ -49,7 +49,7 @@ def pseudo_main(config_list):
     # oai.ChatCompletion.set_cache(seed=args.seed, cache_path=args.cache_folder)
     # logger = mylogger(os.path.join(args.folder, "log.txt"))
 
-    client = Groq()
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
     # 2. args, settings and logger
     args = parse_args()

@@ -68,12 +68,12 @@ class MathChat:
         self.model = model
         self.temperature = temperature
 
-        self.actor = ActorAgent(self.model)
+        self.actor = ActorAgent(self.model, self.groq_client)
 
         # Critique uses the same model as math agent (Can change in future)
-        self.critique1 = CritiqueAgent(self.model)
-        self.critique2 = CritiqueAgent(self.model)
-        self.critique3 = CritiqueAgent(self.model)
+        self.critique1 = CritiqueAgent(self.model, self.groq_client)
+        self.critique2 = CritiqueAgent(self.model, self.groq_client)
+        self.critique3 = CritiqueAgent(self.model, self.groq_client)
 
     def make_conversation(self, problem, n=1, file_to_be_saved=None):
         # initialize the query handler

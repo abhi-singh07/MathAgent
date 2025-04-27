@@ -4,10 +4,10 @@ from flaml import oai
 import openai
 
 class CritiqueAgent:
-    def __init__(self, model, temperature=0.5):
-        # self.client = client
+    def __init__(self, model, client, temperature=0.5):
+        self.client = client
         self.model = model
-        # self.temperature = temperature
+        self.temperature = temperature
         self.system_prompt = str(
             """
                 You are a math expert tasked with reviewing and refining the problem-solving plan created by another AI assistant.
@@ -35,12 +35,12 @@ class CritiqueAgent:
 
             Please review the plan according to your guidelines and provide your feedback. If the plan is acceptable, confirm with "Plan Approved. You may start solving the problem." Otherwise, highlight the issues and suggest specific improvements.
         """
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completions.create(
             model=self.model,
             messages=[
                 {"role": "system", "content": self.system_prompt},
                 {"role": "user", "content": critique_prompt}
             ],
-            # temperature=self.temperature,
+            temperature=self.temperature
         )
         return response.choices[0].message.content
