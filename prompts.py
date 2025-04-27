@@ -20,7 +20,7 @@ Case 3: If the problem cannot be handled in the above two ways, please follow th
 3. Wait for me to give the results.
 4. Continue if you think the result is correct. If the result is invalid or unexpected, please correct your query or reasoning.
 
-After all the queries are run and you get the answer, put the answer in \\boxed{}.
+After all the queries are run and you get the answer, put the answer in \\boxed{}. (Ensure there are two slashes before boxed{}). Ensure there are two slashes before boxed{}.
 
 """,
     # select python or wolfram
@@ -46,7 +46,8 @@ Please follow this process:
 3. Wait for me to give the results.
 4. Continue if you think the result is correct. If the result is invalid or unexpected, please correct your query or reasoning.
 
-After all the queries are run and you get the answer, put the final answer in \\boxed{}.
+After all the queries are run and you get the answer, put the final answer in \\boxed{}. (Ensure there are two slashes before boxed{}). Ensure there are two slashes before boxed{}.
+
 
 """,
     # use python step by step
@@ -66,7 +67,7 @@ Please follow this process:
 3. Wait for me to give the results.
 4. Continue if you think the result is correct. If the result is invalid or unexpected, please correct your query or reasoning.
 
-After all the queries are run and you get the answer, put the answer in \\boxed{}.
+After all the queries are run and you get the answer, put the answer in \\boxed{}. (Ensure there are two slashes before boxed{}). Ensure there are two slashes before boxed{}.
 
 """,
 

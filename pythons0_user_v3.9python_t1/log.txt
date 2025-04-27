@@ -1,11 +1,96 @@
 id : is_correct $ ans $ correct_ans | corrected_ans $ round
-id : is_correct $ ans $ correct_ans | corrected_ans $ round
-id : is_correct $ ans $ correct_ans | corrected_ans $ round
-id : is_correct $ ans $ correct_ans | corrected_ans $ round
-id : is_correct $ ans $ correct_ans | corrected_ans $ round
-id : is_correct $ ans $ correct_ans | corrected_ans $ round
 0 : True $ 22 $ 22 | same $ 2 $
+1 : True $ 1 $ 1 | same $ 2 $
+2 : True $ 11 $ 11 | same $ 3 $
+3 : True $ -\dfrac{5}{2} $ -\frac{5}{2} | same $ 2 $
+4 : True $ (-2, -6) $ (-2,-6) | same $ 2 $
 id : is_correct $ ans $ correct_ans | corrected_ans $ round
 0 : True $ 22 $ 22 | 22 $ 2 $ (from previous run)
+1 : True $ 1 $ 1 | 1 $ 2 $ (from previous run)
+2 : True $ 11 $ 11 | 11 $ 3 $ (from previous run)
+3 : True $ -\dfrac{5}{2} $ -\frac{5}{2} | -\dfrac{5}{2} $ 2 $ (from previous run)
+4 : True $ (-2, -6) $ (-2,-6) | (-2, -6) $ 2 $ (from previous run)
+5 : False $ None $ (7,6) | same $ 15 $
+6 : True $ \dfrac{15\sqrt{7}}{14} $ \frac{15\sqrt{7}}{14} | same $ 2 $
+7 : True $ \dfrac{5}{3} $ \frac53 | same $ 3 $
+8 : False $ None $ \frac{116050}{59049} | same $ 15 $
+9 : True $ \dfrac{\sqrt[3]{4}}{6} $ \frac{\sqrt[3]{4}}{6} | same $ 2 $
+Algebra Accuracy: 8/10 = 0.8
+------------------------------------------------------------
+
 id : is_correct $ ans $ correct_ans | corrected_ans $ round
-0 : True $ 22 $ 22 | 22 $ 2 $ (from previous run)
+0 : True $ 351 $ 351 | same $ 6 $
+1 : True $ \dfrac{40}{243} $ \frac{40}{243} | same $ 2 $
+2 : True $ 34 $ 34 | same $ 2 $
+3 : True $ \dfrac{6}{4165} $ \frac{6}{4165} | same $ 2 $
+4 : False $ None $ \frac{5}{8} | same $ 15 $
+5 : True $ 200 $ 200 | same $ 3 $
+6 : True $ \dfrac{193}{512} $ \dfrac{193}{512} | same $ 2 $
+7 : True $ \dfrac{1}{7} $ \frac{1}{7} | same $ 2 $
+8 : False $ 21 $ 5 | same $ 2 $
+9 : True $ 576 $ 576 | same $ 2 $
+Counting & Probability Accuracy: 8/10 = 0.8
+------------------------------------------------------------
+
+id : is_correct $ ans $ correct_ans | corrected_ans $ round
+0 : True $ x^2 + x - 2 $ x^2 + x - 2 | same $ 2 $
+1 : True $ \dfrac{16 \sqrt{3}}{9} $ \frac{16 \sqrt{3}}{9} | same $ 2 $
+2 : True $ 2\sqrt{5} $ 2 \sqrt{5} | same $ 9 $
+3 : True $ -\dfrac{3}{2} $ -\frac{3}{2} | same $ 2 $
+4 : True $ \dfrac{1024}{27} $ \frac{1024}{27} | same $ 2 $
+5 : True $ -\sqrt{14} $ -\sqrt{14} | same $ 3 $
+6 : False $ None $ 4 | same $ 15 $
+7 : False $ None $ -50 | same $ 15 $
+8 : False $ \dfrac{6a^2}{3a^2 + b^2} $ \frac{8}{5} | same $ 4 $
+9 : False $ 1640 $ 820 | same $ 2 $
+Intermediate Algebra Accuracy: 6/10 = 0.6
+------------------------------------------------------------
+
+id : is_correct $ ans $ correct_ans | corrected_ans $ round
+0 : False $ None $ 413 | same $ 15 $
+1 : True $ 7 $ 7 | same $ 2 $
+2 : False $ None $ 7 | same $ 15 $
+3 : True $ 243 $ 243 | same $ 2 $
+4 : True $ 38 $ 38 | same $ 2 $
+5 : True $ 10 $ 10 | same $ 2 $
+6 : False $ None $ 72 | same $ 15 $
+7 : False $ None $ 75 | same $ 15 $
+8 : False $ None $ 8 | same $ 15 $
+9 : True $ 10 $ 10 | same $ 2 $
+Number Theory Accuracy: 5/10 = 0.5
+------------------------------------------------------------
+
+id : is_correct $ ans $ correct_ans | corrected_ans $ round
+0 : True $ 100 $ 100 | same $ 9 $
+1 : True $ 298 $ 298 | same $ 6 $
+2 : True $ 25 $ 25 | same $ 2 $
+3 : True $ 40 $ 40 | same $ 2 $
+4 : True $ 5 $ 5 | same $ 2 $
+5 : True $ 52 $ 52 | same $ 2 $
+6 : True $ 53 $ 53 | same $ 6 $
+7 : True $ 14\sqrt{15} $ 14\sqrt{15} | same $ 3 $
+8 : True $ 7 $ 7 | same $ 2 $
+9 : True $ \dfrac{5}{8} $ \frac{5}{8} | same $ 2 $
+Prealgebra Accuracy: 10/10 = 1.0
+------------------------------------------------------------
+
+id : is_correct $ ans $ correct_ans | corrected_ans $ round
+0 : True $ 4 $ 4 | same $ 2 $
+1 : True $ \left( -\frac{5}{3}, \frac{2}{3}, \frac{19}{3} \right) $ \left( -\frac{5}{3}, \frac{2}{3}, \frac{19}{3} \right) | same $ 2 $
+2 : False $ \text{No real solution} $ \frac{\sqrt{21}}{14} | same $ 3 $
+3 : True $ \sqrt{x^2 - 1} $ \sqrt{x^2 - 1} | same $ 2 $
+4 : True $ \dfrac{4}{3} $ \frac{4}{3} | same $ 2 $
+5 : False $ 4 $ 2,4 | same $ 2 $
+6 : False $ -3 - 2\sqrt{2} $ 3 \pm 2 \sqrt{2} | same $ 2 $
+7 : False $ None $ (3,-2,2) | same $ 15 $
+8 : False $ 3 $ 3^{2007} | same $ 2.5 $
+9 : True $ \dfrac{9}{10} $ \frac{9}{10} | same $ 3 $
+Precalculus Accuracy: 5/10 = 0.5
+------------------------------------------------------------
+
+****************************
+
+
+
+
+

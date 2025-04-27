@@ -12,6 +12,15 @@ import groq_utils
 from critique import CritiqueAgent
 from actor import ActorAgent
 
+def extract(text):
+    """Extract the content inside the last \\boxed{...} in a text."""
+    matches = re.findall(r"\boxed\{([^{}]*)\}", text)
+    if matches:
+        return matches[-1]  # Return the last match
+    else:
+        return None
+    
+
 class MathChat:
     def __init__(
         self,
@@ -183,6 +192,12 @@ class MathChat:
             conversation_history.append({"role": "assistant", "content": actor_response})
             answer = get_answer(actor_response)
 
+            if not answer:
+                try:
+                    answer = extract(answer)
+                except:
+                    pass
+                
             if answer and answer != "":
                 proxy_agent = UserProxyAgent()
                 tmp_msg, is_query_exist = proxy_agent.check_queries(actor_response)

@@ -41,7 +41,7 @@ args.folder = args.folder + "_baseline_zeroshot_t" + str(args.temperature) + "_s
 
 
 def zeroshot_solve(model, problem, max_tokens=None):
-    full_prompt = """Solve a math problem carefully. Put the final answer in \\boxed{}.\n\nProblem: """
+    full_prompt = """Solve a math problem carefully. Put the final answer in \\boxed{}. (Ensure there are two slashes before boxed{}).\n\nProblem: """
     full_prompt += remove_asy_sections(problem["problem"])
 
     with open(os.path.join(args.folder, "prompt.txt"), "w") as f:
