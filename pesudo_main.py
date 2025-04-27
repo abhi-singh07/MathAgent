@@ -40,13 +40,21 @@ def pseudo_main(config_list):
     # # 1. create groq client
     # client = Groq()
 
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    # openai.api_key = os.getenv("OPENAI_API_KEY")
+
+    # # 2. args, settings and logger
+    # args = parse_args()
+    # args.model = "o1"
+    # oai.ChatCompletion.request_timeout = 60 * 10  # 10 minutes
+    # oai.ChatCompletion.set_cache(seed=args.seed, cache_path=args.cache_folder)
+    # logger = mylogger(os.path.join(args.folder, "log.txt"))
+
+    client = Groq()
 
     # 2. args, settings and logger
     args = parse_args()
-    args.model = "o1"
-    oai.ChatCompletion.request_timeout = 60 * 10  # 10 minutes
-    oai.ChatCompletion.set_cache(seed=args.seed, cache_path=args.cache_folder)
+    args.model = "deepseek-r1-distill-llama-70b"
+    os.makedirs(args.cache_folder, exist_ok=True)  # Create cache folder if it doesn't exist
     logger = mylogger(os.path.join(args.folder, "log.txt"))
 
     # 3. load math dataset
@@ -70,12 +78,13 @@ def pseudo_main(config_list):
 
     # 4. solve
     mathchat_solver = MathChat(
+        client=client,
         config_list=config_list,
         model=args.model,
         prompt_type=args.prompt_type,
         sys_type=args.systype,
         max_round=args.max_round,
-        # temperature=args.temperature,
+        temperature=args.temperature,
         prompt_location=args.prompt_location,
         logger=logger,
         refine=args.refine,

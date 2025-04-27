@@ -15,7 +15,7 @@ from actor import ActorAgent
 class MathChat:
     def __init__(
         self,
-        # client,
+        client,
         model,
         prompt_type="select",
         prompt_location="user",
@@ -23,13 +23,13 @@ class MathChat:
         max_round=10,
         max_invalid_q_per_step=3,
         n=1,
-        # temperature=1,
+        temperature=1,
         logger=None,
         use_cache=True,
         refine=False,
         config_list=None,
     ):
-        # self.groq_client = client
+        self.groq_client : Groq = client
         self.max_round = max_round
         if prompt_type not in PROMPTS:
             raise ValueError(f"Tool {prompt_type} not supported, choose from {PROMPTS.keys()}")
@@ -58,7 +58,7 @@ class MathChat:
             "model": model,
             "messages": messages,
             # "n": n,  # n should be 1 for now
-            # "temperature": temperature,
+            "temperature": temperature,
         }
 
         self.max_invalid_q_per_step = max_invalid_q_per_step
@@ -66,7 +66,7 @@ class MathChat:
         self.logger = logger
         self.config_list = config_list
         self.model = model
-        # self.temperature = temperature
+        self.temperature = temperature
 
         self.actor = ActorAgent(self.model)
 
