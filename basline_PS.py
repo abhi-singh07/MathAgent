@@ -77,7 +77,7 @@ def pnas_solve(model, problem, max_tokens=None):
     config["messages"].append({"role": "assistant", "content": responses[0]})
     if is_query_sucess:
         config["messages"].append(
-            {"role": "user", "content": "Return: " + query_response + "\nPlease put the final answer in \\boxed{}. (Ensure there are two slashes before boxed{})."}
+            {"role": "user", "content": "Return: " + query_response + "\nPlease put the final answer in \\boxed{}. (Ensure there are two backward slashes before boxed{})."}
         )
         if config_list is None:
             raw_responses = oai.ChatCompletion.create(None, **config, use_cache=True)

@@ -2,207 +2,269 @@ Problem: What is the smallest positive integer $a$ such that $a^{-1}$ is undefin
  
 ----------------------------------------
 assistant: <think>
-Okay, so I need to find the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and also undefined modulo 66. Hmm, let's break this down step by step.
+Okay, so I need to find the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and also undefined modulo 66. Hmm, let's break this down.
 
-First, I remember that for a number \( a \) to have an inverse modulo \( n \), \( a \) and \( n \) must be
-coprime, which means their greatest common divisor (GCD) should be 1. So, if \( a^{-1} \) is undefined modulo 55, that means \( \gcd(a, 55) > 1 \). Similarly, \( \gcd(a, 66) > 1 \) because \( a^{-1} \) is also undefined modulo 66.
+First, I remember that an inverse modulo \( n \) exists for a number \( a \) only if \( a \) and \( n \) are coprime, meaning
+their greatest common divisor (gcd) is 1. So, if \( a^{-1} \) is undefined modulo 55, that means \( \gcd(a, 55) > 1 \). Similarly, \( \gcd(a, 66) > 1 \) because the inverse is also undefined there.
 
-Alright, so I need \( a \) to share a common factor greater than 1
-with both 55 and 66. Let me factorize both moduli to find their prime factors.
+Alright, so I need \( a \) to share a common factor greater than 1 with both 55 and 66. Let me
+factorize these moduli to find their prime factors.
 
-55 factors into \( 5 \times 11 \), and 66 factors into \( 2 \times 3 \times 11 \). So, the prime factors of 55 are 5 and 11, and for 66, they are 2, 3, and 11.
+55 factors into \( 5 \times 11 \), and 66 factors into \( 2 \times 3 \times 11 \). So, the common prime factor between them is 11. That means if \( a \) is a multiple of 11, it will share a common factor with both 55 and 66. But wait, maybe
+there's a smaller \( a \) that isn't 11 but still shares factors with both.
 
-Now, to ensure \( a \) shares a common factor with both 55
-and 66, \( a \) must be divisible by at least one prime factor from each. But since 11 is a common factor in both, if \( a \) is a multiple of 11, it will automatically share a common factor with both 55 and 66. However, I need to check if 11 is the smallest such number.
+Looking at the prime factors, 55 has 5 and 11, while 66 has 2, 3, and 11. So, the common factor is 11. Therefore, \( a \) must be a multiple of 11. But is 11 the smallest such \( a \)?
 
-Wait, let me think. If \( a
-\) is 11, then \( \gcd(11, 55) = 11 \) which is greater than 1, so \( a^{-1} \) is undefined modulo 55. Similarly, \( \gcd(11, 66) = 11 \), so \( a^{-1} \) is also undefined modulo 66. So, 11 seems to satisfy both conditions.
+Let me check. If \( a = 11 \), then
+\( \gcd(11, 55) = 11 \) which is greater than 1, so inverse is undefined modulo 55. Similarly, \( \gcd(11, 66) = 11 \), so inverse is undefined modulo 66. So, 11 seems to satisfy both conditions.
 
-But hold on, is there a smaller positive integer than 11 that satisfies
-both conditions? Let's check numbers less than 11.
+Wait, but is there a smaller positive integer than 11 that also satisfies this? Let's check numbers
+less than 11.
 
-Starting with \( a = 1 \): \( \gcd(1, 55) = 1 \) and \( \gcd(1, 66) = 1 \), so inverses are defined. Not good.
+Check \( a = 1 \): \( \gcd(1, 55) = 1 \) and \( \gcd(1, 66) = 1 \), so inverses exist. Not good.
 
-\( a = 2 \): \( \gcd(2, 55) = 1 \) because 2 doesn't divide 55, and \( \gcd(2, 66) = 2 \). So, inverse is undefined modulo 66 but
-defined modulo 55. Doesn't satisfy both.
+\( a = 2 \): \( \gcd(2, 55) = 1 \) since 2 doesn't divide 55, so inverse exists modulo 55. So, no good.
 
-\( a = 3 \): \( \gcd(3, 55) = 1 \), \( \gcd(3, 66) = 3 \). So, inverse is undefined modulo 66 but defined modulo 55. Not both.
+\( a = 3 \): Similarly, \( \gcd(3, 55) = 1 \), inverse exists modulo 55. Not
+good.
 
-\( a = 4 \): \( \gcd(4, 55) = 1 \), \( \gcd(4, 66) = 2 \). Again, same as 2.
+\( a = 4 \): \( \gcd(4, 55) = 1 \), same issue.
 
-\( a = 5 \): \( \gcd(5, 55) = 5 \), \( \gcd(5, 66) =
-1 \). So, inverse is undefined modulo 55 but defined modulo 66. Doesn't satisfy both.
+\( a = 5 \): \( \gcd(5, 55) = 5 \), so inverse undefined modulo 55. But \( \gcd(5, 66) = 1 \), so inverse exists modulo 66. Not good.
 
-\( a = 6 \): \( \gcd(6, 55) = 1 \), \( \gcd(6, 66) = 6 \). So, inverse is undefined modulo 66 but defined modulo 55.
+\( a = 6 \): \( \gcd(6, 55) = 1 \), inverse exists modulo 55. Not good.
 
-\( a = 7 \): \( \gcd(7, 55) = 1 \), \( \gcd(7, 66) = 1 \). Both inverses defined. Not good.
+\( a = 7 \): \( \gcd(7, 55) = 1 \),
+same problem.
 
-\(
-a = 8 \): \( \gcd(8, 55) = 1 \), \( \gcd(8, 66) = 2 \). So, inverse undefined modulo 66 but defined modulo 55.
+\( a = 8 \): \( \gcd(8, 55) = 1 \), same.
 
-\( a = 9 \): \( \gcd(9, 55) = 1 \), \( \gcd(9, 66) = 3 \). Same as 3.
+\( a = 9 \): \( \gcd(9, 55) = 1 \), same.
 
-\( a = 10 \): \( \gcd(10, 55) = 5 \), \( \gcd(10, 66) = 2 \). Ah, here \( a = 10 \) shares a common factor with both
-55 and 66. So, \( \gcd(10, 55) = 5 > 1 \) and \( \gcd(10, 66) = 2 > 1 \). That means \( a = 10 \) is such that \( a^{-1} \) is undefined modulo both 55 and 66.
+\( a = 10 \): \( \gcd(10, 55) = 5 \), so inverse undefined modulo 55. But \( \gcd(10, 66) = 2 \), which is greater than 1, so inverse is also undefined modulo 66. Wait, so \( a = 10 \) also satisfies
+both conditions.
 
-Wait, so 10 is smaller than 11. So, 10 is a better candidate. Let me verify.
+Oh, so 10 is smaller than 11. Let me verify this.
 
 For \( a = 10 \):
 
-- Modulo 55: Since \( \gcd(10, 55) = 5 \),
-which is greater than 1, so no inverse exists. Correct.
-- Modulo 66: \( \gcd(10, 66) = 2 \), which is also greater than 1, so no inverse exists. Correct.
+- \( \gcd(10, 55) = 5 \), which is greater than 1, so inverse undefined modulo 55.
+- \( \gcd(10, 66) = 2 \), which is greater than 1, so inverse undefined modulo 66.
 
-So, \( a = 10 \) satisfies both conditions. Is there a number smaller than 10 that does this?
+Yes, that works. So 10 is smaller than 11.
+So, is 10 the answer?
 
-Let me check \( a = 5 \): As above, \( \gcd(5, 55)
-= 5 \), but \( \gcd(5, 66) = 1 \). So, no.
+Wait, but is there an even smaller \( a \) that satisfies both? Let's check \( a = 5 \):
 
-\( a = 6 \): \( \gcd(6, 55) = 1 \), so no.
+- \( \gcd(5, 55) = 5 \), inverse undefined modulo 55.
+- \( \gcd(5, 66) = 1 \), inverse exists modulo 66. So, no.
 
-\( a = 4 \): \( \gcd(4, 55) = 1 \), no.
+\( a = 6 \):
 
-\( a = 2 \): \( \gcd(2, 55) = 1 \), no.
+- \( \gcd(6, 55) = 1 \), inverse exists modulo 55. Not
+good.
 
-\( a = 3 \): \( \gcd(3, 55) = 1 \), no.
+\( a = 4 \):
 
-So, the next number after 10 is 11, but 10 is smaller. Therefore, 10 is the smallest such
-positive integer.
+- \( \gcd(4, 55) = 1 \), same issue.
 
-Wait, but let me think again. Is 10 the smallest? Let's see, maybe a number that is a multiple of both 5 and 2, which is 10. Since 2 is a factor of 66 and 5 is a factor of 55. So, 10 is the least common multiple of 2 and 5, which is 10.
+\( a = 3 \):
 
-Alternatively, is there a smaller number
-that is a multiple of both a factor of 55 and a factor of 66? The factors of 55 are 5, 11. The factors of 66 are 2, 3, 6, 11, etc. The common factors are 11, but 11 is bigger than 10. So, 10 is indeed smaller.
+- \( \gcd(3, 55) = 1 \), same.
 
-Therefore, 10 is the smallest positive integer \( a \) such that \( a^{-1} \) is
-undefined modulo both 55 and 66.
+\( a = 2 \):
+
+- \( \gcd(2, 55) = 1 \), same.
+
+\( a = 1 \):
+
+- Both gcds are 1, inverses exist.
+
+So, the next candidate is \( a = 10 \). Let me check \( a = 10 \) again.
+
+Yes, as I saw earlier, \(
+a = 10 \) has \( \gcd(10,55) = 5 \) and \( \gcd(10,66) = 2 \), both greater than 1. So, \( a = 10 \) satisfies both conditions.
+
+Wait, but is 10 the smallest? Let me check \( a = 5 \) and \( a = 6 \) again.
+
+No, \( a = 5 \) only fails modulo 66, as its gcd with 66 is 1. Similarly, \( a = 6 \) has
+gcd 1 with 55, so inverse exists. So, 10 is the next after 5 and 6.
+
+Wait, what about \( a = 15 \)? No, 15 is larger than 10. So, 10 seems to be the smallest.
+
+But let me think differently. The problem is asking for \( a \) such that \( a \) is not coprime to both 55 and 66. So, \( a \) must share a
+common factor with both 55 and 66. The prime factors of 55 are 5 and 11, and for 66, it's 2, 3, and 11. So, the common prime factor is 11, but \( a \) could also have multiple prime factors.
+
+But to find the smallest \( a \), it's better to have the smallest possible number that has at least one
+prime factor in common with each modulus.
+
+So, 10 is 2 * 5. 2 is a factor of 66, and 5 is a factor of 55. So, 10 shares a factor with both. Similarly, 15 is 3 * 5. 3 is a factor of 66, and 5 is a factor of 55. So, 15 also satisfies the condition, but it's larger than 10.
+
+Similarly, 6 is 2 * 3. 2 is
+a factor of 66, but 6 is coprime to 55 because 6 and 55 share no common factors besides 1. So, 6 doesn't work.
+
+So, 10 is the smallest number that has one prime factor in common with 55 and another in common with 66.
+
+Wait, but what about \( a = 5 \times 2 = 10 \)? That's the same as
+above.
+
+Alternatively, could a smaller number like 4 work? 4 is 2^2. \( \gcd(4,55)=1 \), so no. Similarly, 8 is 2^3, same issue.
+
+So, 10 is indeed the smallest.
+
+Therefore, the answer is 10.
+
+Wait, but earlier I thought 11 was the answer, but 10 is smaller and also works. So, I must have made a
+mistake in my initial thought.
+
+Yes, because 10 shares a factor with both moduli, while 11 only shares 11 with both, but 10 is smaller.
+
+So, the smallest positive integer \( a \) is 10.
 
 **Final Answer**
 The smallest positive integer \( a \) is \boxed{10}.
 </think>
 
-To find the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and also undefined modulo 66, we need \( a \) to share a common factor greater than 1 with
-both 55 and 66. 
+To find the smallest positive
+integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and modulo 66, we need \( a \) to share a common factor greater than 1 with both 55 and 66. 
 
 1. Factorize the moduli:
-   - 55 factors into \( 5 \times 11 \)
-   - 66 factors into \( 2 \times 3 \times 11 \)
+   - \( 55 = 5 \times 11 \)
+   - \( 66 = 2 \times 3 \times 11 \)
 
-2. Identify common prime factors:
-   - The prime factors of 55 are 5 and 11.
-   - The prime factors of 66 are 2, 3, and 11.
+2. Identify common factors:
+   - The common prime
+factor is 11, but we need the smallest \( a \) that shares any prime factor with both moduli.
 
-3. Determine the smallest \( a \) that
-shares a common factor with both:
-   - \( a \) must be a multiple of at least one prime factor from each modulus.
-   - The smallest such \( a \) is 10, which is a multiple of 2 (a factor of 66) and 5 (a factor of 55).
+3. Check smaller integers:
+   - \( a = 10 \) has \( \gcd(10, 55) = 5 \) and \( \gcd(10, 66) = 2 \), both greater than 1.
 
-4. Verify \( a = 10 \):
-   - \( \gcd(10, 55) = 5 \) (greater than 1)
-   - \(
-\gcd(10, 66) = 2 \) (greater than 1)
-
-Thus, the smallest positive integer \( a \) is \boxed{10}.
+Thus, the smallest positive integer \( a \) is \(\boxed{10}\).
 ----------------------------------------
 critique: 
 
-The plan is structured, logical, and complete. It correctly identifies the need for \( a \) to share common factors with both moduli and systematically finds the smallest such \( a \). The verification step ensures correctness.
+The plan is structured, logical, and complete. It correctly identifies that \( a \) must share a common factor with both 55 and 66, and it properly factorizes the moduli. The assistant checks smaller integers and correctly identifies 10 as the smallest \( a \) that satisfies the conditions. The
+plan is clear and concise, leading to the correct solution.
 
 Plan Approved. You may start solving the problem.
 ----------------------------------------
-critique: <think>
-Alright, let's review the plan provided for finding the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and modulo 66.
+critique: 
 
-1. **Understanding the Problem**: The plan correctly identifies that \( a^{-1} \) is undefined modulo \( n \) if \( \gcd(a, n) > 1 \). This
-is a solid foundation.
+**Plan Review:**
 
-2. **Factorization**: The assistant correctly factorizes 55 and 66 into their prime factors, which is essential for determining common factors.
+The plan is structured and logical, correctly identifying that \( a \) must share a common factor greater than 1 with both 55 and 66. The assistant correctly factorizes the moduli and identifies the common prime factor. However, the initial conclusion that \( a = 11 \) was the
+answer was incorrect because a smaller \( a \) (10) also satisfies the conditions. The assistant correctly re-evaluates and identifies 10 as the smallest such integer.
 
-3. **Identifying Common Factors**: The plan points out that \( a \) must share a common factor with both moduli. It correctly notes
-that 11 is a common factor but then explores smaller multiples, which is a good approach.
+**Issues Identified:**
+- The initial conclusion was incorrect, but the assistant self-corrects upon
+re-evaluation.
 
-4. **Checking Smaller Multiples**: The assistant systematically checks smaller integers to find the minimal \( a \). This is thorough and ensures no smaller number is overlooked.
+**Feedback:**
+The plan is solid after correction. The assistant demonstrates a good understanding of modular inverses and gcd. The mistake was caught and corrected, showing a thorough problem-solving approach.
 
-5. **Verification**: The plan
-verifies that \( a = 10 \) satisfies the conditions by checking the GCDs, which confirms the solution.
-
-**Issues and Suggestions**:
-- The plan is logical and complete.
-- The reasoning is clear, and each step is explained without unnecessary complexity.
-- The verification step is thorough and
-confirms the solution.
-
-**Conclusion**: The plan is well-structured, logical, and complete. It correctly identifies the smallest \( a \) and verifies the solution. No improvements are needed.
-
-**Feedback**: Plan Approved. You may start solving the problem.
-</think>
-
-**Plan Approved. You may start
-solving the problem.**
+**Plan Approved. You may start solving the problem.**
 ----------------------------------------
 assistant: <think>
-Okay, so I need to find the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and also undefined modulo 66. Hmm, let's break this down.
+Alright, let's tackle this problem step by step. So, we need to find the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and also undefined modulo 66. Hmm, okay, let's break this down.
 
-First, I remember that for a number \( a \) to have an inverse modulo \( n \), \( a \) and \( n \) must be coprime, meaning
-their greatest common divisor (GCD) should be 1. So, if \( a^{-1} \) is undefined modulo 55 and 66, that means \( a \) shares a common factor greater than 1 with both 55 and 66.
+First, I remember that for an inverse modulo \( n \) to exist, \( a \) and
+\( n \) must be coprime, which means their greatest common divisor (gcd) should be 1. So, if \( a^{-1} \) is undefined modulo 55 and 66, that means \( a \) shares a common factor greater than 1 with both 55 and 66.
 
-Alright, let's factorize 55 and 66 to find their prime factors. 
+Okay, let's factorize 55 and 66 to see their prime components. 
 
-- 55 can be factored into \( 5 \times 11 \).
-- 66 can
-be factored into \( 2 \times 3 \times 11 \).
+- \( 55 = 5 \times
+11 \)
+- \( 66 = 2 \times 3 \times 11 \)
 
-Now, I need \( a \) to share at least one prime factor with both 55 and 66. Looking at the factorizations, the common prime factor between 55 and 66 is 11. But I also see that 55 has 5, and 66 has 2 and 3. 
+So, the prime factors of 55 are 5 and 11, and for 66, they are 2, 3, and 11. I notice that both 55 and 66 share the prime factor 11. That seems important.
 
-So, \( a \) must be a multiple of at least one
-prime factor from 55 and at least one from 66. Since 11 is common to both, but I need the smallest \( a \), I should consider the smallest primes from each.
+Since \( a \) needs to share a common factor with both 55 and 66, and 11 is common to both, maybe \( a
+\) needs to be a multiple of 11. But wait, is 11 the smallest such number? Let's check smaller integers to see if they also satisfy the condition.
 
-Let's list the prime factors involved:
-- From 55: 5, 11
-- From 66: 2, 3, 11
+Let's start with \( a = 2 \). 
 
-The smallest primes are 2, 3, and 5. To cover both moduli, \( a
-\) needs to be a multiple of at least two of these primes, one from each modulus.
+- \( \gcd(2, 55) = 1 \), so \( a^{-1} \) is defined modulo 55. That's not what we want.
 
-Let's try the smallest combinations:
-1. \( 2 \times 5 = 10 \)
-2. \( 2 \times 3 = 6 \)
-3. \( 3 \times 5 = 15 \)
+Next, \( a = 3 \).
 
-Now, check if these combinations satisfy the condition:
-- For \( a = 6 \): \( \gcd(6, 55) = 1 \) (doesn't
-work for 55)
-- For \( a = 10 \): \( \gcd(10, 55) = 5 \) and \( \gcd(10, 66) = 2 \) (works for both)
-- For \( a = 15 \): \( \gcd(15, 66) = 3 \) (works, but 10 is smaller)
+- \(
+\gcd(3, 55) = 1 \), so again, \( a^{-1} \) is defined modulo 55. Not good.
 
-So, \( a = 10 \) is the smallest number that shares a common factor with both 55 and 66, making \( a^{-1} \) undefined in both
-moduli.
+How about \( a = 4 \)?
 
-**Final Answer:** \boxed{10}
+- \( \gcd(4, 55) = 1 \). Still defined. Hmm.
+
+Let's try \( a = 5 \).
+
+- \( \gcd(5, 55) = 5 \), which is greater than 1. So, \( a^{-1} \) is undefined modulo 55. That's good.
+- Now, check modulo 66: \(
+\gcd(5, 66) = 1 \). Oh, \( a^{-1} \) is defined modulo 66. Not what we want.
+
+Okay, so 5 doesn't work because while it's undefined modulo 55, it's defined modulo 66. Let's try \( a = 6 \).
+
+- \( \gcd(6, 55) = 1 \). Defined modulo 55. Not good.
+
+Next, \( a = 10 \).
+
+- \( \gcd(10, 55) = 5 \).
+Undefined modulo 55. Good.
+- \( \gcd(10, 66) = 2 \). Undefined modulo 66. Perfect!
+
+Wait, so \( a = 10 \) satisfies both conditions. But earlier, I thought 11 might be the answer. Let's verify with \( a = 11 \).
+
+- \( \gcd(11, 55) = 11 \). Undefined modulo 55.
+- \( \gcd(11, 66) = 11 \). Undefined
+modulo 66.
+
+So, \( a = 11 \) also works. But since we're looking for the smallest positive integer, 10 is smaller than 11. Therefore, \( a = 10 \) is the answer.
+
+But just to be thorough, let's check \( a = 7 \), \( a = 8 \), and \( a = 9 \) to ensure there isn't a smaller \( a \) that fits.
+
+- \( a
+= 7 \): \( \gcd(7, 55) = 1 \). Defined modulo 55.
+- \( a = 8 \): \( \gcd(8, 55) = 1 \). Defined modulo 55.
+- \( a = 9 \): \( \gcd(9, 55) = 1 \). Defined modulo 55.
+
+None of these work, so \( a = 10 \) is indeed the smallest.
+
+I think I've covered all the necessary steps and checked smaller integers
+to ensure there's no smaller \( a \) that satisfies the conditions. It seems like \( a = 10 \) is the correct answer.
 </think>
 
-To find the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and modulo 66, we need \( a \) to share a common factor greater than 1 with both moduli.
+To determine the smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and modulo 66, we follow these steps:
 
-1. **Factorize the moduli**:
+1. **Understand the Condition for
+Inverse Modulo**:
+   - An inverse modulo \( n \) exists for \( a \) if and only if \( a \) and \( n \) are coprime (i.e., \( \gcd(a, n) = 1 \)).
+   - Therefore, \( a^{-1} \) is undefined modulo \( n \) if \( \gcd(a, n) > 1 \).
+
+2. **Factorize the Moduli**:
    - \( 55 = 5 \times 11 \)
-   - \( 66 =
-2 \times 3 \times 11 \)
+   - \( 66 = 2
+\times 3 \times 11 \)
 
-2. **Identify common prime factors**:
-   - The prime factors of 55 are 5 and 11.
-   - The prime factors of 66 are 2, 3, and 11.
-   - The common prime factor is 11.
+3. **Identify Common Factors**:
+   - The common prime factor between 55 and 66 is 11.
+   - However, \( a \) needs to share a common factor with both 55 and 66, not necessarily the same factor.
 
-3. **Determine the smallest \( a \)**:
-   - \( a \) must be a multiple of at least one prime factor from each
-modulus.
-   - The smallest such \( a \) is 10, which is a multiple of 2 (a factor of 66) and 5 (a factor of 55).
+4. **Check Smaller Integers**:
+   - We systematically check integers starting from
+2 to find the smallest \( a \) that shares a common factor with both 55 and 66.
+   
+   - \( a = 2 \): \( \gcd(2, 55) = 1 \) (defined modulo 55).
+   - \( a = 3 \): \( \gcd(3, 55) = 1 \) (defined modulo 55).
+   - \( a = 4 \): \( \gcd(4, 55) = 1 \) (defined modulo 55).
+   - \( a = 5 \): \( \gcd(5, 55)
+= 5 \) (undefined modulo 55), but \( \gcd(5, 66) = 1 \) (defined modulo 66).
+   - \( a = 6 \): \( \gcd(6, 55) = 1 \) (defined modulo 55).
+   - \( a = 10 \): \( \gcd(10, 55) = 5 \) (undefined modulo 55) and \( \gcd(10, 66) = 2 \) (undefined modulo 66).
 
-4. **Verify \( a = 10 \)**:
-   - \( \gcd(10, 55) = 5 \) (greater than 1)
-   - \( \gcd(10, 66) = 2 \) (greater than 1)
+5. **Conclusion**:
+   - The smallest \( a \)
+that satisfies both conditions is \( a = 10 \).
 
-Thus, the smallest positive integer \( a \) is \(\boxed{10}\).
+**Final Answer:**
+The smallest positive integer \( a \) such that \( a^{-1} \) is undefined modulo 55 and modulo 66 is \(\boxed{10}\).
 ----------------------------------------
 Solution: An integer $a$ has an inverse $\pmod{55}$ if and only if $\gcd(a,55)=1$. Similarly, an integer $a$ has an inverse $\pmod{66}$ if and only if $\gcd(a,66)=1$.
 

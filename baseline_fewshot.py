@@ -160,7 +160,7 @@ if __name__ == "__main__":
 
         assert examplar_data[cate_id][0]["type"] == problem_set[0]["type"], " examplar and test category mismatch"
         category_prompt = (
-            "Solve a math problem carefully. Put the final answer in \\boxed{}. (Ensure there are two slashes before boxed{}).\n\n"
+            "Solve a math problem carefully. Put the final answer in \\boxed{}. (Ensure there are two backward slashes before boxed{}).\n\n"
             + few_shot_template(examplar_data[cate_id])
             + """\n\nProblem: """
         )
