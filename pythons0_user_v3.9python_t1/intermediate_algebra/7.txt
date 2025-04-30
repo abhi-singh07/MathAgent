@@ -1,0 +1,586 @@
+Problem: Let $r_1,$ $r_2,$ $\dots,$ $r_{98}$ be the roots of
+\[x^{98} + x^{97} + x^{96} + \dots + x^2 + x + 1 = 0.\]Find
+\[\frac{r_1^2}{r_1 + 1} + \frac{r_2^2}{r_2 + 1} + \dots + \frac{r_{98}^2}{r_{98} + 1}.\]
+ 
+----------------------------------------
+assistant: <think>
+Alright, so I've got this problem here, and I need to find the sum of r_i squared over (r_i plus one) for all the roots of a certain polynomial. Let me try to break this down step by step.
+
+First, the polynomial given is x^98 + x^97 + ... + x + 1 = 0. I remember that this is a geometric
+series. The sum of a geometric series x^n + x^(n-1) + ... + x + 1 is equal to (x^(n+1) - 1)/(x - 1) when x isn't 1. So, in this case, n is 98, so the polynomial can be written as (x^99 - 1)/(x - 1) = 0. That means the roots are the 99th roots of unity, excluding 1. So, r_i are the roots of x^99 = 1,
+except for x = 1.
+
+Okay, so we have 98 roots, each being a 99th root of unity except for 1. Now, the problem is to compute the sum S = sum_{i=1 to 98} [r_i^2 / (r_i + 1)].
+
+Hmm, how do I approach this? Maybe I can express each term in a different way. Let me see. The term is r_i^2 / (r_i + 1). I can
+try to manipulate this expression algebraically. Let's do that:
+
+r_i^2 / (r_i + 1) = [ (r_i^2 + r_i) - r_i ] / (r_i + 1 ) = [ r_i(r_i + 1) - r_i ] / (r_i + 1 ) = r_i - [ r_i / (r_i + 1) ]
+
+Wait, that might not help directly. Alternatively, maybe I can perform polynomial division or find a way to
+relate this to the original equation.
+
+Another idea: Since each r_i is a root of x^98 + x^97 + ... + x + 1 = 0, which is equivalent to x^99 = 1, so r_i^99 = 1. That might be useful.
+
+Also, since r_i are roots of unity, they satisfy certain properties. For example, the sum of all roots of unity is
+zero. But here, we have a sum over all roots except 1.
+
+Wait, let me think about the expression r_i^2 / (r_i + 1). Maybe I can write it as:
+
+r_i^2 / (r_i + 1) = (r_i^2 + 1 - 1) / (r_i + 1) = (r_i^2 + 1)/(r_i + 1) - 1/(r_i + 1)
+
+But I'm not sure if that helps. Alternatively, perhaps I can express it
+as:
+
+r_i^2 / (r_i + 1) = (r_i + 1 - 1)^2 / (r_i + 1) = [ (r_i + 1)^2 - 2(r_i + 1) + 1 ] / (r_i + 1) = (r_i + 1) - 2 + 1/(r_i + 1)
+
+Wait, that seems complicated. Maybe another approach: Let's consider that r_i^99 = 1, so r_i^k = r_i^{k mod 99}. So, perhaps I can find a relationship between r_i^2 and
+r_i + 1.
+
+Alternatively, maybe I can consider that since r_i^99 = 1, then r_i^k = r_i^{k mod 99}, so r_i^{-1} = r_i^{98}, r_i^{-2} = r_i^{97}, etc.
+
+Let me consider the denominator: r_i + 1. If I can write 1/(r_i + 1) in terms of r_i's powers, maybe I can find a telescoping series or
+something.
+
+Wait, another idea: Let's consider the function f(x) = x^2 / (x + 1). We need to evaluate the sum of f(r_i) over all roots r_i. So, maybe we can relate this sum to the derivatives or values of the polynomial at certain points.
+
+I recall that for a polynomial P(x) with roots r_i, the sum
+over f(r_i) can sometimes be expressed using P'(x)/P(x) or other related expressions.
+
+Specifically, the sum over 1/(x - r_i) is equal to P'(x)/P(x). But here, our function is x^2 / (x + 1). Hmm, not sure.
+
+Wait, let me think differently. Maybe I can write x^2 / (x + 1) as (x^2 + 1 - 1)/(x + 1) =
+(x^2 + 1)/(x + 1) - 1/(x + 1). Then, (x^2 + 1)/(x + 1) is equal to x - 1 + 2/(x + 1). Wait, let's check:
+
+(x^2 + 1) divided by (x + 1). Let's do polynomial division:
+
+x + 1 ) x^2 + 0x + 1
+
+First term: x^2 / x = x. Multiply (x + 1) by x: x^2 + x. Subtract: (x^2 + 0x + 1) - (x^2 + x) = -x + 1.
+
+Next
+term: -x / x = -1. Multiply (x + 1) by -1: -x -1. Subtract: (-x + 1) - (-x -1) = 2.
+
+So, (x^2 + 1)/(x + 1) = x - 1 + 2/(x + 1).
+
+Therefore, x^2 / (x + 1) = (x^2 + 1 - 2)/(x + 1) = (x^2 + 1)/(x + 1) - 2/(x + 1) = (x - 1 + 2/(x + 1)) - 2/(x + 1) = x -1.
+
+Wait, that can't be right. Let me check:
+
+Wait,
+x^2 / (x + 1) = (x^2 + 1 - 2)/(x + 1) = (x^2 +1)/(x +1) - 2/(x +1). From above, (x^2 +1)/(x +1) = x -1 + 2/(x +1). So substituting:
+
+x^2 / (x +1) = (x -1 + 2/(x +1)) - 2/(x +1) = x -1.
+
+Wait, that's interesting. So, x^2 / (x +1) simplifies to x -1. So, that means for each root r_i, r_i^2 / (r_i +1)
+= r_i -1.
+
+Wow, that's a huge simplification! So, the term we're summing is just r_i -1. So, the sum S is equal to sum_{i=1 to 98} (r_i -1) = sum_{i=1 to 98} r_i - sum_{i=1 to 98} 1.
+
+So, S = (sum r_i) - 98.
+
+Now, we need to compute sum r_i. Since the polynomial is x^98 + x^97 + ... + x +1 =0, which
+is (x^99 -1)/(x -1) =0, so the roots are the 99th roots of unity except x=1.
+
+The sum of all 99th roots of unity is 0. Since we are excluding x=1, the sum of the remaining roots is -1 (because sum of all roots is 0, so sum of roots excluding 1 is -1).
+
+Therefore, sum r_i = -1.
+
+So, S = (-1) -98 =
+-99.
+
+Wait, that seems straightforward now. Let me recap to make sure I didn't make any mistakes.
+
+1. The polynomial is (x^99 -1)/(x -1) =0, so roots are 99th roots of unity except x=1.
+
+2. The expression r_i^2 / (r_i +1) simplifies to r_i -1.
+
+3. Therefore, the sum S is sum (r_i -1) = sum r_i - sum
+1.
+
+4. Sum r_i is -1 (since total sum of all roots is 0, minus the root at 1 gives -1).
+
+5. Sum 1 over 98 terms is 98.
+
+6. So, S = (-1) -98 = -99.
+
+That seems correct. Let me verify the simplification step again because that was key.
+
+We had x^2 / (x +1). I performed polynomial division:
+
+x^2
+divided by x +1. How?
+
+Wait, actually, let me do it again.
+
+Divide x^2 by x +1.
+
+x^2 ÷ (x +1):
+
+First term: x^2 /x = x. Multiply (x +1) by x: x^2 +x.
+
+Subtract: (x^2 +0x) - (x^2 +x) = -x.
+
+Bring down the 0 (since there's no constant term in x^2). So, now we have -x.
+
+Divide -x by x: -1. Multiply (x
++1) by -1: -x -1.
+
+Subtract: (-x -0) - (-x -1) = 1.
+
+So, x^2 / (x +1) = x -1 + 1/(x +1). Wait, that's different from before.
+
+Wait, earlier I thought x^2 / (x +1) simplifies to x -1, but that doesn't seem right because when I do the division, I get x -1 + 1/(x +1). So, perhaps my initial
+simplification was wrong.
+
+Wait, hold on. Let me clarify.
+
+If x^2 / (x +1) = x -1 + 1/(x +1), then x^2 = (x -1)(x +1) +1.
+
+Let me check: (x -1)(x +1) = x^2 -1. So, x^2 = (x^2 -1) +1. That's correct. So, x^2 / (x +1) = x -1 + 1/(x +1).
+
+Therefore, my earlier conclusion that x^2 / (x +1) = x -1 is
+incorrect. There's an extra term of 1/(x +1). So, I have to include that.
+
+So, going back, r_i^2 / (r_i +1) = r_i -1 + 1/(r_i +1).
+
+Therefore, the sum S is sum (r_i -1 + 1/(r_i +1)) = sum (r_i -1) + sum 1/(r_i +1).
+
+So, S = (sum r_i - sum 1) + sum 1/(r_i +1).
+
+Wait, so now I have two sums to
+compute: sum r_i and sum 1/(r_i +1).
+
+We already know that sum r_i = -1, as before.
+
+Sum 1/(r_i +1) is a bit trickier. How do I compute that?
+
+Hmm. Maybe I can relate this to the polynomial whose roots are r_i. Let me think.
+
+Given that the polynomial is P(x) = x^98 + x^97 + ... + x +1 =0, with
+roots r_i.
+
+We can write P(x) = (x^99 -1)/(x -1).
+
+So, P(x) = 0 when x is a 99th root of unity except x=1.
+
+We need to compute sum_{i=1 to98} 1/(r_i +1).
+
+This is equivalent to sum_{i=1 to98} 1/(r_i +1) = sum_{i=1 to98} 1/(r_i +1).
+
+Let me consider that for each root r_i, 1/(r_i +1) is the same as
+evaluating another function at r_i.
+
+Alternatively, perhaps I can consider the transformation y = x +1, so x = y -1. Then, if x is a root of P(x) =0, y is a root of P(y -1) =0.
+
+But maybe that's too convoluted.
+
+Alternatively, perhaps I can use the formula for sum 1/(r_i + a), where a is a
+constant.
+
+I recall that for a polynomial Q(x) with roots s_i, sum 1/(s_i + a) = Q'(-a)/Q(-a). Wait, is that correct?
+
+Wait, more precisely, if Q(x) = prod (x - s_i), then sum 1/(s_i + a) = sum 1/(a - (-s_i)) = sum 1/(a - t_i) where t_i = -s_i. So, if Q(x) = prod (x - s_i), then Q(-x) = prod (-x -
+s_i) = (-1)^n prod (x + s_i). So, if we let R(x) = Q(-x), then R(x) has roots at t_i = -s_i.
+
+Then, sum 1/(t_i - (-a)) = sum 1/(t_i + a) = R'(a)/R(a). Wait, I'm getting confused.
+
+Alternatively, the formula is: If P(x) = (x - r_1)(x - r_2)...(x - r_n), then P'(x) = sum_{i=1 ton} prod_{j≠i} (x -
+r_j). Therefore, P'(x)/P(x) = sum_{i=1 ton} 1/(x - r_i).
+
+So, in our case, sum_{i=1 ton} 1/(c - r_i) = P'(c)/P(c).
+
+So, in our case, sum 1/(r_i +1) = sum 1/(1 + r_i) = sum 1/(1 - (-r_i)). Let me set c =1. So, if I have Q(x) = P(-x), then Q(x) has roots at -r_i. Then, sum 1/(1 - (-r_i)) = sum 1/(1 +
+r_i) = Q'(1)/Q(1).
+
+Therefore, yes, that seems like a way to compute it.
+
+So, let me define Q(x) = P(-x). Then, Q(x) = P(-x) = (-x)^98 + (-x)^97 + ... + (-x) +1.
+
+Compute Q(x):
+
+Since P(x) = x^98 +x^97 + ... +x +1, then P(-x) = (-x)^98 + (-x)^97 + ... + (-x) +1.
+
+Note that (-x)^k = x^k when k is
+even and -x^k when k is odd.
+
+So, P(-x) = x^98 -x^97 +x^96 -x^95 + ... +x^2 -x +1.
+
+So, Q(x) = x^98 -x^97 +x^96 - ... +x^2 -x +1.
+
+Now, Q(1) = 1 -1 +1 -1 + ... +1 -1 +1. Let's compute this.
+
+Since Q(x) has 99 terms (from x^98 down to 1), and each pair is (1 -1) + (1 -1) + ... +1.
+
+Wait, x=1, so Q(1)
+= 1 -1 +1 -1 + ... +1.
+
+How many terms? The polynomial is degree 98, so 99 terms.
+
+Starting with 1, then -1, then +1, etc., up to 98th degree.
+
+So, number of terms: 99. So, starting with 1, the sequence is 1, -1, 1, -1,...,1.
+
+Since 99 is odd, the last term is +1. So, the sum is (1 -1) 49 times,
+which is 0, plus the last term 1. So, Q(1) =1.
+
+Similarly, Q'(x) is the derivative of P(-x). Let's compute Q'(x):
+
+Q(x) = P(-x) = (-x)^98 + (-x)^97 + ... + (-x) +1.
+
+So, Q'(x) = 98*(-x)^97*(-1) + 97*(-x)^96*(-1) + ... + 2*(-x)^1*(-1) + 1*(-1)^0*0.
+
+Wait, let me compute it properly.
+
+The derivative
+of (-x)^k is k*(-x)^{k-1}*(-1) = -k*(-x)^{k-1}.
+
+So, Q'(x) = sum_{k=1 to98} -k*(-x)^{k-1}.
+
+Wait, let me write it as:
+
+Q'(x) = sum_{k=1}^{98} [ derivative of (-x)^k ] = sum_{k=1}^{98} [ k*(-x)^{k-1}*(-1) ] = sum_{k=1}^{98} [ -k*(-x)^{k-1} ].
+
+Simplify: -k*(-x)^{k-1} =
+-k*(-1)^{k-1}x^{k-1}.
+
+Therefore, Q'(x) = sum_{k=1}^{98} [ -k*(-1)^{k-1}x^{k-1} ].
+
+Now, evaluate Q'(1):
+
+Q'(1) = sum_{k=1}^{98} [ -k*(-1)^{k-1}*1^{k-1} ] = sum_{k=1}^{98} [ -k*(-1)^{k-1} ].
+
+Simplify the term inside the sum: -k*(-1)^{k-1} = k*(-1)^{k}.
+
+Because (-1)^{k-1} = (-1)^k * (-1)^{-1} =
+(-1)^k * (-1). So, -k*(-1)^{k-1} = k*(-1)^k.
+
+Therefore, Q'(1) = sum_{k=1}^{98} k*(-1)^k.
+
+So, we need to compute sum_{k=1}^{98} k*(-1)^k.
+
+This is an alternating sum: -1 + 2 -3 +4 -5 +6 - ... +98.
+
+This is a known series. The sum can be computed as follows:
+
+Pair the terms: (-1 +2) + (-3 +4) + (-5
++6) + ... + (-97 +98).
+
+Each pair is (1) + (1) + ... + (1). How many pairs? From 1 to98, that's 49 pairs (since 98/2=49). Each pair sums to 1. So, total sum is 49*1=49.
+
+Therefore, Q'(1) =49.
+
+So, going back, sum 1/(r_i +1) = Q'(1)/Q(1) =49/1=49.
+
+Therefore, sum 1/(r_i +1) =49.
+
+So, going back to
+our expression for S:
+
+S = sum (r_i -1 + 1/(r_i +1)) = sum (r_i -1) + sum 1/(r_i +1) = (sum r_i -98) +49.
+
+We already have sum r_i = -1.
+
+Therefore, S = (-1 -98) +49 = (-99) +49 = -50.
+
+Wait, that's different from my initial conclusion. So, where did I go wrong earlier?
+
+Initially, I thought that
+x^2 / (x +1) simplifies to x -1, but that was incorrect. The correct simplification is x^2 / (x +1) = x -1 + 1/(x +1). Therefore, the sum S is not just sum (x -1) but also includes the sum of 1/(x +1).
+
+So, after correctly accounting for that, S becomes (-1 -98) +49 = -50.
+
+Therefore, the final
+answer is -50.
+
+But let me double-check the calculations because it's easy to make a mistake in the signs.
+
+First, sum r_i = -1.
+
+sum 1/(r_i +1) =49.
+
+Therefore, S = (sum r_i -98) +49 = (-1 -98) +49 = (-99) +49 = -50.
+
+Yes, that seems correct.
+
+Alternatively, let me verify the sum 1/(r_i +1)
+=49.
+
+We had Q(x) = P(-x) = (-x)^98 + (-x)^97 + ... + (-x) +1.
+
+Then, Q(1)=1.
+
+Q'(1)=49.
+
+So, sum 1/(r_i +1) = Q'(1)/Q(1)=49/1=49.
+
+Yes, that's correct.
+
+Therefore, S = (sum r_i -98) +49 = (-1 -98) +49 = -99 +49 = -50.
+
+So, the final answer is -50.
+</think>
+
+To solve the problem, we start by
+recognizing that the given polynomial is a geometric series which can be written as \(\frac{x^{99} - 1}{x - 1} = 0\). The roots \(r_1, r_2, \dots, r_{98}\) are the 99th roots of unity, excluding 1. 
+
+We need to compute the sum:
+\[
+S = \sum_{i=1}^{98} \frac{r_i^2}{r_i + 1}
+\]
+
+First, we simplify the
+expression \(\frac{r_i^2}{r_i + 1}\). Through polynomial division, we find:
+\[
+\frac{r_i^2}{r_i + 1} = r_i - 1 + \frac{1}{r_i + 1}
+\]
+
+Thus, the sum \(S\) becomes:
+\[
+S = \sum_{i=1}^{98} \left( r_i - 1 + \frac{1}{r_i + 1} \right) = \left( \sum_{i=1}^{98} r_i \right) - 98 + \sum_{i=1}^{98}
+\frac{1}{r_i + 1}
+\]
+
+We know that the sum of all 99th roots of unity is 0, so the sum of the roots excluding 1 is \(-1\). Therefore:
+\[
+\sum_{i=1}^{98} r_i = -1
+\]
+
+Next, we compute \(\sum_{i=1}^{98} \frac{1}{r_i + 1}\). Using the polynomial \(Q(x) = P(-x)\) where \(P(x)\) is the given polynomial,
+we find:
+\[
+Q(1) = 1 \quad \text{and} \quad Q'(1) = 49
+\]
+Thus:
+\[
+\sum_{i=1}^{98} \frac{1}{r_i + 1} = \frac{Q'(1)}{Q(1)} = 49
+\]
+
+Putting it all together:
+\[
+S = (-1 - 98) + 49 = -99 + 49 = -50
+\]
+
+The final answer is:
+\[
+\boxed{-50}
+\]
+----------------------------------------
+critique: 
+
+The plan is well-structured and logically complete. It correctly identifies the roots as the 99th roots of unity, simplifies the given expression, and appropriately uses properties of polynomials and their derivatives to compute the required sums. The step-by-step approach is clear and free of
+errors. 
+
+Plan Approved. You may start solving the problem.
+----------------------------------------
+critique: 
+
+The plan presented is thorough and logically structured. It correctly identifies the roots of the polynomial as the 99th roots of unity excluding 1. The simplification of the expression \( \frac{r_i^2}{r_i + 1} \) is handled carefully, recognizing the need to account for the additional term \(
+\frac{1}{r_i + 1} \). The use of the polynomial \( Q(x) = P(-x) \) to compute the sum \( \sum \frac{1}{r_i + 1} \) is appropriate, and the calculations for \( Q(1) \) and \( Q'(1) \) are correct. The final computation leading to the answer \(-50\) is accurate.
+
+**Plan Approved. You may start solving
+the problem.**
+----------------------------------------
+assistant: <think>
+Alright, so I've got this math problem to solve, and it's about finding a sum involving the roots of a polynomial. Let me try to break it down step by step.
+
+First, the problem gives me a polynomial:
+
+\[x^{98} + x^{97} + x^{96} + \dots + x^2 + x + 1 = 0\]
+
+And it says that \( r_1, r_2,
+\dots, r_{98} \) are the roots of this polynomial. I need to find the sum:
+
+\[\frac{r_1^2}{r_1 + 1} + \frac{r_2^2}{r_2 + 1} + \dots + \frac{r_{98}^2}{r_{98} + 1}\]
+
+Okay, so the first thing I notice is that the polynomial is a geometric series. It starts with \( x^{98} \) and goes down to \( x \)
+and then 1. I remember that the sum of a geometric series \( 1 + x + x^2 + \dots + x^n \) is \( \frac{x^{n+1} - 1}{x - 1} \) when \( x \neq 1 \). So, if I set \( n = 98 \), the polynomial can be written as:
+
+\[\frac{x^{99} - 1}{x - 1} = 0\]
+
+This means that the roots of the polynomial are the 99th
+roots of unity, excluding \( x = 1 \). So, \( r_1, r_2, \dots, r_{98} \) are the 99th roots of unity, except for 1.
+
+Now, I need to compute the sum \( S \):
+
+\[ S = \sum_{i=1}^{98} \frac{r_i^2}{r_i + 1} \]
+
+Hmm, this looks a bit complicated. Maybe I can simplify the expression \( \frac{r_i^2}{r_i +
+1} \). Let me try to manipulate it:
+
+\[ \frac{r_i^2}{r_i + 1} = \frac{r_i^2 + 1 - 1}{r_i + 1} = \frac{(r_i^2 + 1) - 1}{r_i + 1} = \frac{r_i^2 + 1}{r_i + 1} - \frac{1}{r_i + 1} \]
+
+Wait, that doesn't seem to help much. Maybe I can perform polynomial division or find another way to simplify it. Let me
+try another approach.
+
+Let's consider that \( r_i \) are roots of the polynomial \( x^{99} - 1 = 0 \), so \( r_i^{99} = 1 \). This might be useful later.
+
+Going back to \( \frac{r_i^2}{r_i + 1} \), perhaps I can write it as:
+
+\[ \frac{r_i^2}{r_i + 1} = r_i - 1 + \frac{1}{r_i + 1} \]
+
+Let me check
+this:
+
+\[ r_i - 1 + \frac{1}{r_i + 1} = \frac{(r_i - 1)(r_i + 1) + 1}{r_i + 1} = \frac{r_i^2 - 1 + 1}{r_i + 1} = \frac{r_i^2}{r_i + 1} \]
+
+Yes, that works! So, I can rewrite the sum \( S \) as:
+
+\[ S = \sum_{i=1}^{98} \left( r_i - 1 + \frac{1}{r_i + 1} \right) = \sum_{i=1}^{98} r_i - \sum_{i=1}^{98}
+1 + \sum_{i=1}^{98} \frac{1}{r_i + 1} \]
+
+Simplifying the sums:
+
+1. \( \sum_{i=1}^{98} r_i \): Since \( r_1, r_2, \dots, r_{98} \) are the 99th roots of unity excluding 1, and the sum of all 99th roots of unity is 0, this sum is \( -1 \).
+
+2. \( \sum_{i=1}^{98} 1 = 98 \).
+
+3. \( \sum_{i=1}^{98}
+\frac{1}{r_i + 1} \): This part seems trickier. I need to find a way to compute this sum.
+
+To find \( \sum_{i=1}^{98} \frac{1}{r_i + 1} \), I recall that for a polynomial \( P(x) \) with roots \( r_1, r_2, \dots, r_n \), the sum \( \sum_{i=1}^{n} \frac{1}{a - r_i} = \frac{P'(a)}{P(a)} \).
+
+In this
+case, \( a = -1 \), so:
+
+\[ \sum_{i=1}^{98} \frac{1}{-1 - r_i} = \frac{P'(-1)}{P(-1)} \]
+
+But our sum is \( \sum_{i=1}^{98} \frac{1}{r_i + 1} = - \sum_{i=1}^{98} \frac{1}{-1 - r_i} = - \frac{P'(-1)}{P(-1)} \).
+
+Now, let's compute \( P(-1) \) and \( P'(-1) \).
+
+Given \( P(x) = x^{98} + x^{97} + \dots
++ x + 1 \), then:
+
+\[ P(-1) = (-1)^{98} + (-1)^{97} + \dots + (-1) + 1 \]
+
+Since the polynomial has 99 terms (from \( x^{98} \) to \( x^0 = 1 \)), and the exponents alternate between even and odd:
+
+\[ P(-1) = 1 - 1 + 1 - 1 + \dots + 1 = 1 \]
+
+Because there are an odd number of terms, it ends with a
+positive 1.
+
+Next, compute \( P'(-1) \):
+
+\[ P'(x) = 98x^{97} + 97x^{96} + \dots + 2x + 1 \]
+
+So,
+
+\[ P'(-1) = 98(-1)^{97} + 97(-1)^{96} + \dots + 2(-1) + 1 \]
+
+Again, evaluating the terms:
+
+- The coefficients are from 98 down to 1.
+- The exponents alternate between odd and even.
+
+Calculating \(
+P'(-1) \):
+
+\[ P'(-1) = -98 + 97 - 96 + 95 - \dots - 2 + 1 \]
+
+This is an alternating sum. Let's pair the terms:
+
+\[ (-98 + 97) + (-96 + 95) + \dots + (-2 + 1) \]
+
+Each pair is \( -1 \), and there are 49 such pairs (since 98 terms / 2 = 49).
+
+So,
+
+\[ P'(-1) = 49 \times (-1) = -49 \]
+
+Therefore,
+
+\[
+\sum_{i=1}^{98} \frac{1}{r_i + 1} = - \frac{P'(-1)}{P(-1)} = - \frac{-49}{1} = 49 \]
+
+Now, putting it all together:
+
+\[ S = \sum_{i=1}^{98} r_i - 98 + \sum_{i=1}^{98} \frac{1}{r_i + 1} = (-1) - 98 + 49 = -1 - 98 + 49 = -50 \]
+
+So, the final answer is:
+
+\[\boxed{-50}\]
+</think>
+
+To solve the problem,
+we start by recognizing that the given polynomial is a geometric series which can be written as:
+
+\[
+\frac{x^{99} - 1}{x - 1} = 0
+\]
+
+The roots \( r_1, r_2, \dots, r_{98} \) are the 99th roots of unity, excluding 1.
+
+We need to compute the sum:
+
+\[
+S = \sum_{i=1}^{98} \frac{r_i^2}{r_i +
+1}
+\]
+
+First, we simplify the expression \( \frac{r_i^2}{r_i + 1} \):
+
+\[
+\frac{r_i^2}{r_i + 1} = r_i - 1 + \frac{1}{r_i + 1}
+\]
+
+Thus, the sum \( S \) becomes:
+
+\[
+S = \sum_{i=1}^{98} \left( r_i - 1 + \frac{1}{r_i + 1} \right) = \left( \sum_{i=1}^{98} r_i \right) - 98 + \sum_{i=1}^{98} \frac{1}{r_i
++ 1}
+\]
+
+We know that the sum of all 99th roots of unity is 0, so the sum of the roots excluding 1 is \(-1\). Therefore:
+
+\[
+\sum_{i=1}^{98} r_i = -1
+\]
+
+Next, we compute \( \sum_{i=1}^{98} \frac{1}{r_i + 1} \). Using the polynomial \( P(x) = x^{98} + x^{97} + \dots + x + 1 \), we find:
+
+\[
+P(-1) =
+1 \quad \text{and} \quad P'(-1) = -49
+\]
+
+Thus:
+
+\[
+\sum_{i=1}^{98} \frac{1}{r_i + 1} = - \frac{P'(-1)}{P(-1)} = 49
+\]
+
+Putting it all together:
+
+\[
+S = (-1 - 98) + 49 = -99 + 49 = -50
+\]
+
+The final answer is:
+
+\[
+\boxed{-50}
+\]
+----------------------------------------
+Solution: Let $r$ be a root of the equation, so
+\[r^{98} + r^{97} + \dots + r + 1 = 0.\]Then
+\[(r - 1)(r^{98} + r^{97} + \dots + r + 1) = 0,\]which expands as $r^{99} - 1 = 0.$  Hence, $r^{99} = 1.$
+
+Taking the absolute value of both sides, we get $|r^{99}| = 1,$ so $|r|^{99} = 1.$  Therefore, $|r| = 1.$  We have shown that all roots lie on the unit circle.  Hence, $r \overline{r} = |r|^2 = 1$ for any root $r.$
+
+Since the polynomial $x^{98} + x^{97} + x^{96} + \dots + x^2 + x + 1$ has real coefficients, its nonreal roots come in conjugate pairs.  Furthermore, if $r$ is a root, then $|r| = 1.$  If $r$ is real, then the only possible values of $r$ are 1 and $-1,$ and neither of these are roots, so all the roots are nonreal, which means we can arrange all the roots in conjugate pairs.  Without loss of generality, we can assume that $\overline{r}_i = r_{99 - i}$ for $1 \le r \le 98.$  This also tells us that $r_i r_{99 - i} = 1.$
+
+Let
+\[S = \sum_{i = 1}^{98} \frac{r_i^2}{r_i + 1}.\]Then
+\begin{align*}
+2S &= \sum_{i = 1}^{98} \left( \frac{r_i^2}{r_i + 1} + \frac{r_{99 - i}^2}{r_{99 - i} + 1} \right) \\
+&= \sum_{i = 1}^{98} \left( \frac{r_i^2}{r_i + 1} + \frac{\frac{1}{r_i^2}}{\frac{1}{r_i} + 1} \right) \\
+&= \sum_{i = 1}^{98} \left( \frac{r_i^2}{r_i + 1} + \frac{1}{r_i (r_i + 1)} \right) \\
+&= \sum_{i = 1}^{98} \frac{r_i^3 + 1}{r_i (r_i + 1)} \\
+&= \sum_{i = 1}^{98} \frac{r_i^2 - r_i + 1}{r_i} \\
+&= \sum_{i = 1}^{98} \left( r_i - 1 + \frac{1}{r_i} \right).
+\end{align*}By Vieta's formulas,
+\[r_1 + r_2 + \dots + r_{98} = -1.\]Taking the conjugate, we get
+\[\overline{r}_1 + \overline{r}_2 + \dots + \overline{r}_{98} = -1,\]so
+\[\frac{1}{r_1} + \frac{1}{r_2} + \dots + \frac{1}{r_{98}} = -1.\]Therefore, $2S = -1 - 98 - 1 = -100,$ so $S = \boxed{-50}.$

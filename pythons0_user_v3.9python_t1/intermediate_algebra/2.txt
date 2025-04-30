@@ -1,0 +1,524 @@
+Problem: Let $a$ and $b$ be the positive roots of $x^2 - 3x + 1 = 0.$  Find
+\[\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}.\]
+ 
+----------------------------------------
+assistant: <think>
+Okay, so I have this problem where I need to find the value of \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\), where \(a\) and \(b\) are the positive roots of the quadratic equation \(x^2 - 3x + 1 = 0\). Hmm, let me think about how to approach this step by step.
+
+First, I remember that for a
+quadratic equation \(x^2 - (sum)x + (product) = 0\), the sum of the roots is equal to the coefficient of \(x\) with a negative sign, and the product is the constant term. So in this case, the sum of the roots \(a + b = 3\) and the product \(ab = 1\). That seems straightforward.
+
+Now, the expression
+I need to compute is \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\). This looks a bit complicated, but maybe I can simplify it somehow. Let me try to manipulate it algebraically.
+
+I can write the expression as \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}} = \frac{a\sqrt{a} + b\sqrt{b}}{\sqrt{a}\sqrt{b}}\).
+Wait, let me check that. If I get a common denominator, which is \(\sqrt{a}\sqrt{b}\), then the numerator becomes \(a\sqrt{a} + b\sqrt{b}\). So, the expression simplifies to \(\frac{a\sqrt{a} + b\sqrt{b}}{\sqrt{ab}}\).
+
+But I know that \(ab = 1\), so \(\sqrt{ab} = \sqrt{1} = 1\). That means the
+denominator is just 1, so the expression simplifies to \(a\sqrt{a} + b\sqrt{b}\).
+
+Hmm, okay, so now I need to find \(a\sqrt{a} + b\sqrt{b}\). Let me see if I can express this in terms of \(a + b\) and \(ab\), since I already know those values.
+
+Wait, \(a\sqrt{a}\) is the same as \(a^{3/2}\) and
+similarly \(b\sqrt{b} = b^{3/2}\). So the expression is \(a^{3/2} + b^{3/2}\). I'm not sure how to handle exponents like that directly, but maybe I can find a way to relate this to \(a + b\) and \(ab\).
+
+Another approach could be to let \(t = \sqrt{a}\) and \(s = \sqrt{b}\). Then, \(a = t^2\) and
+\(b = s^2\). Substituting into the original equation, we have:
+
+\(t^4 - 3t^2 + 1 = 0\) and similarly for \(s\). But I'm not sure if that helps me directly.
+
+Wait, maybe I can square the original expression to see if that helps. Let me try that.
+
+Let \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\).
+Then,
+
+\(E^2 = \left(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\right)^2 = \frac{a^2}{b} + 2\frac{a}{\sqrt{b}} \cdot \frac{b}{\sqrt{a}} + \frac{b^2}{a}\).
+
+Simplifying each term:
+
+- \(\frac{a^2}{b}\)
+- \(2 \cdot \frac{a}{\sqrt{b}} \cdot \frac{b}{\sqrt{a}} = 2 \cdot \frac{ab}{\sqrt{ab}} = 2 \cdot
+\frac{1}{\sqrt{1}} = 2\)
+- \(\frac{b^2}{a}\)
+
+So, \(E^2 = \frac{a^2}{b} + 2 + \frac{b^2}{a}\).
+
+Now, let's combine the first and third terms:
+
+\(\frac{a^2}{b} + \frac{b^2}{a} = \frac{a^3 + b^3}{ab}\).
+
+Since \(ab = 1\), this becomes \(a^3 + b^3\).
+
+So, \(E^2 = (a^3 + b^3) + 2\).
+
+Now, I need to find
+\(a^3 + b^3\). I remember that \(a^3 + b^3 = (a + b)^3 - 3ab(a + b)\). Let me compute that.
+
+Given \(a + b = 3\) and \(ab = 1\):
+
+\(a^3 + b^3 = 3^3 - 3 \times 1 \times 3 = 27 - 9 = 18\).
+
+So, substituting back into \(E^2\):
+
+\(E^2 = 18 + 2 = 20\).
+
+Therefore, \(E = \sqrt{20}\). But wait, \(E\) is a
+sum of positive terms, so it must be positive. Thus, \(E = \sqrt{20}\).
+
+Simplifying \(\sqrt{20}\), we get \(2\sqrt{5}\).
+
+Wait, but let me double-check my steps to make sure I didn't make a mistake.
+
+1. I started with \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\).
+2. Squared it to get \(E^2 =
+\frac{a^2}{b} + 2 + \frac{b^2}{a}\).
+3. Combined the terms to get \(E^2 = (a^3 + b^3)/ab + 2\).
+4. Since \(ab = 1\), it simplifies to \(a^3 + b^3 + 2\).
+5. Calculated \(a^3 + b^3 = 18\), so \(E^2 = 20\).
+6. Thus, \(E = \sqrt{20} = 2\sqrt{5}\).
+
+This seems correct. Alternatively, maybe I can compute
+\(a\) and \(b\) explicitly using the quadratic formula and then compute the expression numerically to verify.
+
+The quadratic equation is \(x^2 - 3x + 1 = 0\), so the roots are:
+
+\(x = \frac{3 \pm \sqrt{9 - 4}}{2} = \frac{3 \pm \sqrt{5}}{2}\).
+
+So, \(a = \frac{3 + \sqrt{5}}{2}\) and \(b = \frac{3 -
+\sqrt{5}}{2}\).
+
+Now, let's compute \(a/\sqrt{b} + b/\sqrt{a}\).
+
+First, compute \(\sqrt{a}\) and \(\sqrt{b}\).
+
+But this might get messy, so perhaps it's better to stick with the algebraic approach which gave me \(2\sqrt{5}\). To confirm, let's compute it numerically.
+
+Compute \(a = (3 + sqrt(5))/2
+≈ (3 + 2.23607)/2 ≈ 5.23607/2 ≈ 2.61803\).
+
+Compute \(b = (3 - sqrt(5))/2 ≈ (3 - 2.23607)/2 ≈ 0.76393/2 ≈ 0.381966\).
+
+Now, compute \(\sqrt{a} ≈ sqrt(2.61803) ≈ 1.61803\).
+
+Compute \(\sqrt{b} ≈ sqrt(0.381966) ≈ 0.61803\).
+
+Now, compute \(a/\sqrt{b} ≈ 2.61803 / 0.61803 ≈ 4.23607\).
+
+Compute
+\(b/\sqrt{a} ≈ 0.381966 / 1.61803 ≈ 0.23607\).
+
+Adding them together: 4.23607 + 0.23607 ≈ 4.47214.
+
+Now, compute \(2\sqrt{5} ≈ 2 * 2.23607 ≈ 4.47214\), which matches the numerical result. So, the algebraic approach was correct.
+
+Therefore, the final answer is \(2\sqrt{5}\).
+</think>
+
+To solve the
+problem, we start by recognizing that \(a\) and \(b\) are the positive roots of the quadratic equation \(x^2 - 3x + 1 = 0\). Using Vieta's formulas, we know that \(a + b = 3\) and \(ab = 1\).
+
+We aim to find the value of \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\). By squaring this expression and
+simplifying using known values, we find that it equals \(2\sqrt{5}\).
+
+**Step-by-Step Explanation:**
+
+1. **Identify the Sum and Product of Roots:**
+   - \(a + b = 3\)
+   - \(ab = 1\)
+
+2. **Express the Target Expression:**
+   - Let \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\)
+
+3. **Square the
+Expression:**
+   - \(E^2 = \left(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\right)^2\)
+   - Expand to get \(E^2 = \frac{a^2}{b} + 2 + \frac{b^2}{a}\)
+
+4. **Simplify the Terms:**
+   - \(\frac{a^2}{b} + \frac{b^2}{a} = \frac{a^3 + b^3}{ab}\)
+   - Since \(ab = 1\), this becomes \(a^3 + b^3\)
+
+5. **Compute
+\(a^3 + b^3\):**
+   - Use the identity \(a^3 + b^3 = (a + b)^3 - 3ab(a + b)\)
+   - Substitute values: \(3^3 - 3 \times 1 \times 3 = 27 - 9 = 18\)
+
+6. **Substitute Back into \(E^2\):**
+   - \(E^2 = 18 + 2 = 20\)
+   - Therefore, \(E = \sqrt{20} = 2\sqrt{5}\)
+
+**Answer:**
+\[\boxed{2\sqrt{5}}\]
+----------------------------------------
+critique: <think>
+Alright, let me review the plan provided by the assistant for solving the problem. The goal is to find the value of \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\) where \(a\) and \(b\) are the positive roots of the quadratic equation \(x^2 - 3x + 1 = 0\).
+
+**Step-by-Step Review:**
+
+1.
+**Identify the Sum and Product of Roots:**
+   - The assistant correctly identifies that \(a + b = 3\) and \(ab = 1\) using Vieta's formulas. This is a solid starting point.
+
+2. **Express the Target Expression:**
+   - The expression \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\) is clearly defined.
+It's appropriate to let \(E\) represent this expression for simplification.
+
+3. **Square the Expression:**
+   - Squaring \(E\) is a logical step to eliminate the square roots and simplify the expression. The expansion is correctly performed:
+     \[
+     E^2 = \left(\frac{a}{\sqrt{b}} +
+\frac{b}{\sqrt{a}}\right)^2 = \frac{a^2}{b} + 2 + \frac{b^2}{a}
+     \]
+   - The cross term simplifies correctly to 2, leveraging the fact that \(ab = 1\).
+
+4. **Simplify the Terms:**
+   - Combining \(\frac{a^2}{b} + \frac{b^2}{a}\) into \(\frac{a^3 + b^3}{ab}\) is correct. Recognizing that \(ab =
+1\) simplifies this to \(a^3 + b^3\), which is a crucial step.
+
+5. **Compute \(a^3 + b^3\):**
+   - The identity \(a^3 + b^3 = (a + b)^3 - 3ab(a + b)\) is appropriately used. Substituting the known values:
+     \[
+     a^3 + b^3 = 3^3 - 3 \times 1 \times 3 = 27 - 9 = 18
+     \]
+   - This calculation
+is accurate and necessary for proceeding.
+
+6. **Substitute Back into \(E^2\):**
+   - Plugging \(a^3 + b^3 = 18\) into the expression for \(E^2\) gives:
+     \[
+     E^2 = 18 + 2 = 20
+     \]
+   - Taking the square root yields \(E = \sqrt{20} = 2\sqrt{5}\), which is the correct
+simplification.
+
+**Additional Checks:**
+
+- The assistant also provided a numerical verification by computing the roots explicitly and substituting them back into the original expression. This step adds robustness to the solution, confirming that the algebraic manipulation was correct.
+
+**Potential
+Improvements:**
+
+- While the plan is logical and complete, it could benefit from a brief explanation of why squaring the expression is a useful strategy in this context. This would make the reasoning more accessible to someone less familiar with algebraic manipulations.
+- Additionally, defining
+intermediate variables for \(a^3 + b^3\) or explaining the choice of identity used might enhance clarity for novice learners.
+
+**Conclusion:**
+
+The plan is well-structured, logically sound, and complete. All steps are necessary and correctly executed, leading to the accurate solution. The inclusion
+of numerical verification adds confidence in the result. With minor clarifications to enhance understanding, the plan is exemplary.
+
+**Feedback:**
+
+Plan Approved. You may start solving the problem.
+----------------------------------------
+critique: <think>
+Alright, I need to review the plan provided by the assistant for solving the problem. Let me go through each step carefully.
+
+The problem is to find \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\) where \(a\) and \(b\) are the positive roots of \(x^2 - 3x + 1 = 0\). 
+
+The assistant's plan starts
+by identifying that \(a + b = 3\) and \(ab = 1\), which is correct based on Vieta's formulas. Then, they let \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\) and square both sides to simplify. 
+
+Expanding \(E^2\), they correctly handle each term, especially simplifying the middle term using \(ab =
+1\). Combining the terms \(\frac{a^2}{b} + \frac{b^2}{a}\) into \(\frac{a^3 + b^3}{ab}\) is a good move since \(ab = 1\), which simplifies things further.
+
+Next, they use the identity for \(a^3 + b^3\) and substitute the known values to find it equals 18. Adding 2 gives \(E^2 = 20\), so \(E =
+\sqrt{20} = 2\sqrt{5}\). 
+
+The plan is logical and complete. Each step is explained clearly, and the use of algebraic identities is appropriate. The assistant also cross-verified by computing the roots numerically, which adds confidence in the result. 
+
+I don't see any vague steps or unexplained
+assumptions. The Python code isn't necessary here since the problem can be solved algebraically. The steps are concise and lead directly to the solution without errors.
+
+Plan Approved. You may start solving the problem.
+----------------------------------------
+assistant: <think>
+Alright, let's solve the problem step by step.
+
+**Problem Statement:**
+Let \(a\) and \(b\) be the positive roots of the quadratic equation \(x^2 - 3x + 1 = 0\). We need to find the value of \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\).
+
+**Step-by-Step Solution:**
+
+1. **Find the Sum and
+Product of the Roots:**
+   - For the quadratic equation \(x^2 - (a + b)x + ab = 0\), the sum of the roots \(a + b\) is equal to the coefficient of \(x\) with the opposite sign, and the product \(ab\) is the constant term.
+   - Given the equation \(x^2 - 3x + 1 = 0\), we have:
+     \[
+     a + b = 3
+\quad \text{and} \quad ab = 1
+     \]
+
+2. **Express the Target Expression:**
+   - Let \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\).
+
+3. **Square the Expression to Simplify:**
+   - To eliminate the square roots, we square both sides:
+     \[
+     E^2 = \left(\frac{a}{\sqrt{b}} +
+\frac{b}{\sqrt{a}}\right)^2
+     \]
+   - Expand the right-hand side:
+     \[
+     E^2 = \frac{a^2}{b} + 2 \cdot \frac{a}{\sqrt{b}} \cdot \frac{b}{\sqrt{a}} + \frac{b^2}{a}
+     \]
+   - Simplify the middle term:
+     \[
+     2 \cdot \frac{a}{\sqrt{b}} \cdot \frac{b}{\sqrt{a}} = 2 \cdot
+\frac{ab}{\sqrt{ab}} = 2 \cdot \frac{1}{\sqrt{1}} = 2
+     \]
+   - Therefore:
+     \[
+     E^2 = \frac{a^2}{b} + 2 + \frac{b^2}{a}
+     \]
+
+4. **Combine Like Terms:**
+   - Combine \(\frac{a^2}{b} + \frac{b^2}{a}\):
+     \[
+     \frac{a^2}{b} + \frac{b^2}{a} = \frac{a^3 + b^3}{ab}
+     \]
+   - Since
+\(ab = 1\), this simplifies to:
+     \[
+     a^3 + b^3
+     \]
+
+5. **Compute \(a^3 + b^3\):**
+   - Use the identity for the sum of cubes:
+     \[
+     a^3 + b^3 = (a + b)^3 - 3ab(a + b)
+     \]
+   - Substitute the known values \(a + b = 3\) and \(ab = 1\):
+     \[
+     a^3 + b^3 = 3^3 - 3 \cdot 1
+\cdot 3 = 27 - 9 = 18
+     \]
+
+6. **Substitute Back into \(E^2\):**
+   - Now, substitute \(a^3 + b^3 = 18\) into the expression for \(E^2\):
+     \[
+     E^2 = 18 + 2 = 20
+     \]
+   - Taking the square root of both sides:
+     \[
+     E = \sqrt{20} = 2\sqrt{5}
+     \]
+
+**Final
+Answer:**
+\[
+\boxed{2\sqrt{5}}
+\]
+
+```python
+import math
+
+# Define the quadratic equation coefficients
+a_plus_b = 3
+ab = 1
+
+# Compute a^3 + b^3 using the identity
+a3_plus_b3 = (a_plus_b ** 3) - 3 * ab * a_plus_b
+
+# Compute E^2
+E_squared = a3_plus_b3 + 2
+
+# Compute E
+E = math.sqrt(E_squared)
+
+#
+Simplify the radical form
+simplified_E = 2 * math.sqrt(5)
+
+# Print the final answer
+print("The value of the expression is", simplified_E)
+```
+</think>
+
+To solve the problem, we start by identifying the sum and product of the roots of the quadratic equation \(x^2 - 3x + 1 = 0\). Using Vieta's
+formulas, we know that \(a + b = 3\) and \(ab = 1\).
+
+We aim to find the value of \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\). By squaring this expression and simplifying using known values, we find that it equals \(2\sqrt{5}\).
+
+**Step-by-Step Explanation:**
+
+1. **Identify the Sum and Product of
+Roots:**
+   - \(a + b = 3\)
+   - \(ab = 1\)
+
+2. **Express the Target Expression:**
+   - Let \(E = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\)
+
+3. **Square the Expression:**
+   - \(E^2 = \left(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\right)^2\)
+   - Expand to get \(E^2 = \frac{a^2}{b} + 2 +
+\frac{b^2}{a}\)
+
+4. **Simplify the Terms:**
+   - \(\frac{a^2}{b} + \frac{b^2}{a} = \frac{a^3 + b^3}{ab}\)
+   - Since \(ab = 1\), this becomes \(a^3 + b^3\)
+
+5. **Compute \(a^3 + b^3\):**
+   - Use the identity \(a^3 + b^3 = (a + b)^3 - 3ab(a + b)\)
+   - Substitute values: \(3^3 - 3 \times 1 \times 3
+= 27 - 9 = 18\)
+
+6. **Substitute Back into \(E^2\):**
+   - \(E^2 = 18 + 2 = 20\)
+   - Therefore, \(E = \sqrt{20} = 2\sqrt{5}\)
+
+**Answer:**
+\[\boxed{2\sqrt{5}}\]
+
+```python
+import math
+
+# Define the quadratic equation coefficients
+a_plus_b = 3
+ab = 1
+
+# Compute a^3 + b^3 using the
+identity
+a3_plus_b3 = (a_plus_b ** 3) - 3 * ab * a_plus_b
+
+# Compute E^2
+E_squared = a3_plus_b3 + 2
+
+# Compute E
+E = math.sqrt(E_squared)
+
+# Simplify the radical form
+simplified_E = 2 * math.sqrt(5)
+
+# Print the final answer
+print("The value of the expression is", simplified_E)
+```
+----------------------------------------
+user: The value of the expression is 4.47213595499958
+
+The value of the expression is 4.47213595499958The value of the expression is 4.47213595499958
+
+The value of the expression is 4.47213595499958
+Continue. Just return the answer in \boxed{}. Ensure there are two backward slashes before boxed{} and
+result is inside the curly braces.
+Above is the result to the queries. If you get to the final answer, put it in \boxed{}. (Ensure there are two backward slashes before boxed{} and result is inside the curly braces.)
+----------------------------------------
+assistant: <think>
+Alright, so I've got this math problem here: Let \(a\) and \(b\) be the positive roots of the quadratic equation \(x^2 - 3x + 1 = 0\). I need to find the value of \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\).
+
+First, I remember that for a quadratic equation of the form \(x^2 - (a + b)x + ab =
+0\), the sum of the roots \(a + b\) is equal to the coefficient of \(x\) with a negative sign, and the product \(ab\) is the constant term. So in this case, \(a + b = 3\) and \(ab = 1\). That's a good starting point.
+
+Now, the expression I need to find is \(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\).
+At first glance, this looks a bit complicated because of the square roots in the denominators. I'm thinking about how to simplify this expression.
+
+One strategy could be to square the entire expression to eliminate the square roots. Let's call the expression \(E\), so:
+
+\[
+E = \frac{a}{\sqrt{b}} +
+\frac{b}{\sqrt{a}}
+\]
+
+If I square both sides, I get:
+
+\[
+E^2 = \left(\frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}\right)^2
+\]
+
+Expanding the right side, I have:
+
+\[
+E^2 = \frac{a^2}{b} + 2 \cdot \frac{a}{\sqrt{b}} \cdot \frac{b}{\sqrt{a}} + \frac{b^2}{a}
+\]
+
+Simplifying the middle term:
+
+\[
+2 \cdot
+\frac{a}{\sqrt{b}} \cdot \frac{b}{\sqrt{a}} = 2 \cdot \frac{ab}{\sqrt{a}\sqrt{b}} = 2 \cdot \frac{ab}{\sqrt{ab}}
+\]
+
+Since \(ab = 1\), this simplifies to:
+
+\[
+2 \cdot \frac{1}{\sqrt{1}} = 2
+\]
+
+So now, the equation becomes:
+
+\[
+E^2 = \frac{a^2}{b} + 2 + \frac{b^2}{a}
+\]
+
+Now, I need to find
+\(\frac{a^2}{b} + \frac{b^2}{a}\). Combining these terms gives:
+
+\[
+\frac{a^2}{b} + \frac{b^2}{a} = \frac{a^3 + b^3}{ab}
+\]
+
+Again, since \(ab = 1\), this simplifies to:
+
+\[
+a^3 + b^3
+\]
+
+I recall the identity for the sum of cubes:
+
+\[
+a^3 + b^3 = (a + b)^3 - 3ab(a + b)
+\]
+
+Substituting the known
+values \(a + b = 3\) and \(ab = 1\):
+
+\[
+a^3 + b^3 = 3^3 - 3 \cdot 1 \cdot 3 = 27 - 9 = 18
+\]
+
+So, going back to the expression for \(E^2\):
+
+\[
+E^2 = 18 + 2 = 20
+\]
+
+Taking the square root of both sides:
+
+\[
+E = \sqrt{20} = 2\sqrt{5}
+\]
+
+Therefore, the value of \(\frac{a}{\sqrt{b}} +
+\frac{b}{\sqrt{a}}\) is \(2\sqrt{5}\).
+
+To ensure I didn't make any mistakes, I'll double-check the steps:
+
+1. I correctly identified \(a + b = 3\) and \(ab = 1\).
+2. Squaring \(E\) was a good move to eliminate the square roots.
+3. Expanding the squared expression was done correctly.
+4. Simplifying
+the middle term using \(ab = 1\) was appropriate.
+5. Combining \(\frac{a^2}{b} + \frac{b^2}{a}\) into \(\frac{a^3 + b^3}{ab}\) was correct.
+6. Using the sum of cubes identity was the right approach.
+7. Substituting the known values gave me \(a^3 + b^3 = 18\).
+8. Adding 2 to get \(E^2 = 20\) and then
+taking the square root to find \(E = 2\sqrt{5}\) was accurate.
+
+Everything checks out, so I'm confident in the solution.
+</think>
+
+The value of the expression is \(\boxed{2\sqrt{5}}\).
+----------------------------------------
+Solution: By Vieta's formulas, $a + b = 3$ and $ab = 1.$
+
+Let
+\[t = \frac{a}{\sqrt{b}} + \frac{b}{\sqrt{a}}.\]Then
+\begin{align*}
+t^2 &= \frac{a^2}{b} + 2 \sqrt{ab} + \frac{b^2}{a} \\
+&= \frac{a^3 + b^3}{ab} + 2 \\
+&= \frac{(a + b)(a^2 - ab + b^2)}{ab} + 2 \\
+&= \frac{(a + b)((a + b)^2 - 3ab)}{ab} + 2 \\
+&= \frac{3 \cdot (3^2 - 3)}{1} + 2 \\
+&= 20,
+\end{align*}so $t = \sqrt{20} = \boxed{2 \sqrt{5}}.$

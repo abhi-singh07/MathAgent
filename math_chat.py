@@ -230,6 +230,7 @@ class MathChat:
                 is_query_success = False
 
             if is_query_success:
+                query_response += tmp_msg
                 conversation_history.append({"role": "user", "content": query_response})
             else:
                 invalid_q += 1
