@@ -33,14 +33,14 @@ class UserProxyAgent:
                     or "```" in response
                 ):
                     return (
-                        "\nYour query is invalid and cannot be parsed. (If you already get the answer, put it in \\boxed{}.)",
+                        "\nYour query is invalid and cannot be parsed. (If you already got the answer, put it in \\boxed{}. Ensure there are two backward slashes before boxed{} and result is inside the curly braces.)",
                         True,
                     )
                 else:
                     return "", False
 
         return (
-            "\nAbove is the result to the queries. If you get to the final answer, put it in \\boxed{}",
+            "\nAbove is the result to the queries. If you get to the final answer, put it in \\boxed{}. (Ensure there are two backward slashes before boxed{} and result is inside the curly braces.)",
             True,
         )
 
@@ -64,7 +64,7 @@ class UserProxyAgent:
                     return "Your query is invalid and cannot be parsed. Please revise your query format.", False
                 else:
                     return (
-                        "Continue. Please keep solving the problem until you need to query. (If you get to the answer, put it in \\boxed{}.)",
+                        "Continue. Please keep solving the problem until you need to query. (If you get to the answer, put it in \\boxed{}. Ensure there are two backward slashes before boxed{} and result is inside the curly braces.)",
                         True,
                     )
 
@@ -108,6 +108,8 @@ class UserProxyAgent:
             )
         self.last_query = tuple(queries)
         self.last_return = buffer_out
+
+        buffer_out += buffer_out + "\n" + "Continue. Just return the answer in \\boxed{}. Ensure there are two backward slashes before boxed{} and result is inside the curly braces."
         return buffer_out, all_success
 
     def wolfram_query(self, query: str):

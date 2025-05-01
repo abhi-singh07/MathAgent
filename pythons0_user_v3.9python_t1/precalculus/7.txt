@@ -1,0 +1,802 @@
+Problem: A certain regular tetrahedron has three of its vertices at the points $(0,1,2),$ $(4,2,1),$ and $(3,1,5).$  Find the coordinates of the fourth vertex, given that they are also all integers.
+ 
+----------------------------------------
+assistant: <think>
+Okay, so I have this problem where I need to find the fourth vertex of a regular tetrahedron, given three of its vertices. The points given are (0,1,2), (4,2,1), and (3,1,5). All the vertices are supposed to be integers, which should help in the calculations.
+
+First, I remember that a
+regular tetrahedron has all edges of equal length. So, the distance between any two vertices should be the same. That means I need to calculate the distances between the given points and then find the fourth point such that its distance from each of the three given points is equal to that common
+edge length.
+
+Let me start by finding the distances between the given points. Maybe I should label them as A, B, and C for clarity.
+
+Let’s assign:
+- A = (0,1,2)
+- B = (4,2,1)
+- C = (3,1,5)
+
+Now, I need to compute the distances AB, AC, and BC.
+
+The distance formula in 3D is sqrt[(x2 - x1)^2 + (y2 -
+y1)^2 + (z2 - z1)^2].
+
+Calculating AB:
+x difference: 4-0=4
+y difference: 2-1=1
+z difference: 1-2=-1
+So, AB = sqrt(4^2 + 1^2 + (-1)^2) = sqrt(16 + 1 + 1) = sqrt(18) = 3*sqrt(2)
+
+Calculating AC:
+x difference: 3-0=3
+y difference:1-1=0
+z difference:5-2=3
+So, AC = sqrt(3^2 + 0^2 + 3^2) = sqrt(9 + 0 + 9)
+= sqrt(18) = 3*sqrt(2)
+
+Calculating BC:
+x difference:3-4=-1
+y difference:1-2=-1
+z difference:5-1=4
+So, BC = sqrt((-1)^2 + (-1)^2 + 4^2) = sqrt(1 + 1 + 16) = sqrt(18) = 3*sqrt(2)
+
+Okay, so all three edges AB, AC, BC are equal, which is a good start. So, the edge length is 3*sqrt(2). Therefore, the
+fourth vertex D must be such that its distance from A, B, and C is also 3*sqrt(2).
+
+Now, I need to find the coordinates (x,y,z) of point D such that distance from D to A, D to B, and D to C is 3*sqrt(2).
+
+So, mathematically, this translates to:
+
+sqrt[(x - 0)^2 + (y - 1)^2 + (z - 2)^2] =
+3*sqrt(2)
+sqrt[(x - 4)^2 + (y - 2)^2 + (z - 1)^2] = 3*sqrt(2)
+sqrt[(x - 3)^2 + (y - 1)^2 + (z - 5)^2] = 3*sqrt(2)
+
+If I square both sides of each equation to eliminate the square roots, I get:
+
+1. x^2 + (y - 1)^2 + (z - 2)^2 = 18
+2. (x - 4)^2 + (y - 2)^2 + (z - 1)^2 = 18
+3. (x - 3)^2 + (y - 1)^2 +
+(z - 5)^2 = 18
+
+Now, I have three equations. Let me expand each of them.
+
+Starting with equation 1:
+x^2 + (y^2 - 2y + 1) + (z^2 - 4z + 4) = 18
+Simplify: x^2 + y^2 - 2y + 1 + z^2 - 4z + 4 = 18
+Combine like terms: x^2 + y^2 + z^2 - 2y - 4z + 5 = 18
+So, x^2 + y^2 + z^2 - 2y - 4z = 13. Let's call this
+equation 1a.
+
+Equation 2:
+(x^2 - 8x + 16) + (y^2 - 4y + 4) + (z^2 - 2z + 1) = 18
+Simplify: x^2 -8x +16 + y^2 -4y +4 + z^2 -2z +1 =18
+Combine like terms: x^2 + y^2 + z^2 -8x -4y -2z +21 =18
+So, x^2 + y^2 + z^2 -8x -4y -2z = -3. Let's call this equation 2a.
+
+Equation 3:
+(x^2 -6x +9) + (y^2 -2y +1) +
+(z^2 -10z +25) =18
+Simplify: x^2 -6x +9 + y^2 -2y +1 + z^2 -10z +25 =18
+Combine like terms: x^2 + y^2 + z^2 -6x -2y -10z +35 =18
+So, x^2 + y^2 + z^2 -6x -2y -10z = -17. Let's call this equation 3a.
+
+Now, I have:
+
+1a: x² + y² + z² -2y -4z =13
+
+2a: x² + y² + z² -8x -4y -2z =-3
+
+3a: x² + y² + z² -6x
+-2y -10z =-17
+
+Now, let me subtract equation 1a from equation 2a to eliminate x² + y² + z².
+
+So, (equation 2a) - (equation 1a):
+
+(x² + y² + z² -8x -4y -2z) - (x² + y² + z² -2y -4z) = -3 -13
+
+Simplify:
+
+-8x -4y -2z - (-2y -4z) = -16
+
+Which is:
+
+-8x -4y -2z +2y +4z = -16
+
+Combine like terms:
+
+-8x -2y
++2z = -16
+
+Let me write this as:
+
+-8x -2y +2z = -16
+
+I can divide both sides by 2 to simplify:
+
+-4x - y + z = -8
+
+Let me call this equation 4.
+
+Similarly, subtract equation 1a from equation 3a:
+
+(equation 3a) - (equation 1a):
+
+(x² + y² + z² -6x -2y -10z) - (x² + y² + z² -2y -4z) = -17
+-13
+
+Simplify:
+
+-6x -2y -10z - (-2y -4z) = -30
+
+Which is:
+
+-6x -2y -10z +2y +4z = -30
+
+Combine like terms:
+
+-6x -6z = -30
+
+Divide both sides by -6:
+
+x + z = 5
+
+Let me call this equation 5.
+
+So now, from equation 5: x + z =5 => z =5 -x
+
+From equation 4: -4x - y + z = -8
+
+But since z =5 -x, substitute
+into equation 4:
+
+-4x - y + (5 -x) = -8
+
+Simplify:
+
+-5x - y +5 = -8
+
+So, -5x - y = -13
+
+Let me write this as:
+
+5x + y =13
+
+So, equation 6: y =13 -5x
+
+So now, I have:
+
+y =13 -5x
+
+z =5 -x
+
+So, coordinates of D are (x, 13 -5x, 5 -x)
+
+Now, I can substitute these into equation 1a to find x.
+
+Equation 1a:
+x² + y² + z² -2y -4z =13
+
+Substitute y and z:
+
+x² + (13 -5x)^2 + (5 -x)^2 -2*(13 -5x) -4*(5 -x) =13
+
+Let me compute each term step by step.
+
+First, expand (13 -5x)^2:
+
+= 169 -130x +25x²
+
+Then, expand (5 -x)^2:
+
+=25 -10x +x²
+
+Now, compute -2*(13 -5x):
+
+= -26 +10x
+
+Compute -4*(5 -x):
+
+= -20 +4x
+
+Now,
+put it all together:
+
+x² + (169 -130x +25x²) + (25 -10x +x²) + (-26 +10x) + (-20 +4x) =13
+
+Combine like terms:
+
+x² +169 -130x +25x² +25 -10x +x² -26 +10x -20 +4x =13
+
+Now, collect x² terms:
+
+1x² +25x² +1x² =27x²
+
+x terms:
+
+-130x -10x +10x +4x = (-130 -10 +10 +4)x = (-126)x
+
+Constants:
+
+169 +25 -26
+-20 = (169 +25) =194; (194 -26)=168; (168 -20)=148
+
+So, overall:
+
+27x² -126x +148 =13
+
+Subtract 13:
+
+27x² -126x +135 =0
+
+Simplify the equation:
+
+27x² -126x +135 =0
+
+I can divide all terms by 9:
+
+3x² -14x +15 =0
+
+Now, solve for x using quadratic formula.
+
+x = [14 ± sqrt(14² -4*3*15)]/(2*3)
+
+Compute
+discriminant:
+
+14² =196
+
+4*3*15=180
+
+So, sqrt(196 -180)=sqrt(16)=4
+
+Thus,
+
+x=(14 ±4)/6
+
+So, two solutions:
+
+x=(14 +4)/6=18/6=3
+
+x=(14 -4)/6=10/6=5/3 ≈1.666...
+
+But the problem states that the coordinates are integers. So, x must be integer. So, 5/3 is not integer, so x=3.
+
+So, x=3.
+
+Then, y=13
+-5x=13 -15= -2
+
+z=5 -x=5 -3=2
+
+Thus, the coordinates are (3, -2, 2)
+
+Wait, but let me verify this point.
+
+So, D=(3,-2,2). Let me check the distances.
+
+Compute distance from A=(0,1,2) to D=(3,-2,2):
+
+x difference:3-0=3
+
+y difference:-2 -1=-3
+
+z difference:2-2=0
+
+Distance squared:3² + (-3)^2
++0²=9+9=18, so distance is sqrt(18)=3*sqrt(2). Good.
+
+Distance from B=(4,2,1) to D=(3,-2,2):
+
+x difference:3-4=-1
+
+y difference:-2 -2=-4
+
+z difference:2-1=1
+
+Distance squared: (-1)^2 + (-4)^2 +1^2=1 +16 +1=18, so distance is sqrt(18). Good.
+
+Distance from C=(3,1,5) to D=(3,-2,2):
+
+x
+difference:3-3=0
+
+y difference:-2 -1=-3
+
+z difference:2-5=-3
+
+Distance squared:0 +9 +9=18, so distance sqrt(18). Perfect.
+
+So, D=(3,-2,2) is a valid point.
+
+But wait, in a regular tetrahedron, there are two possible positions for the fourth vertex, one on each side of the plane formed by the three
+given points. So, maybe there's another solution.
+
+But in this case, when I solved the quadratic, I only got x=3 as integer solution. The other solution was x=5/3, which is not integer. So, perhaps in this case, only one possible integer point.
+
+Wait, but maybe I made a mistake in the equations. Let
+me double-check.
+
+Wait, when I subtracted equation 1a from equation 3a, I got equation 5: x + z=5, and equation 4: -4x - y + z =-8.
+
+Then, substituting z=5 -x into equation 4:
+
+-4x - y +5 -x =-8 => -5x -y +5 =-8 => -5x -y = -13 => 5x + y=13 => y=13 -5x.
+
+Then, substituting into equation 1a:
+
+x² + y²
++ z² -2y -4z=13
+
+Which led to 27x² -126x +135=0, simplifying to 3x² -14x +15=0.
+
+Solutions x=3 and x=5/3.
+
+Since x must be integer, only x=3 is valid.
+
+So, the only integer solution is (3,-2,2).
+
+But wait, let me think again. In 3D space, for three points forming an equilateral triangle, there are
+two points that form a regular tetrahedron, each on opposite sides of the plane. So, perhaps I missed another point.
+
+But in this case, the other solution for x is 5/3, which is not integer. So, maybe the other point doesn't have integer coordinates, so the only integer solution is
+(3,-2,2).
+
+Therefore, the fourth vertex is at (3,-2,2).
+
+But to be thorough, let me check if there could be another integer solution.
+
+Wait, perhaps I made a mistake in the equations. Let me re-examine.
+
+Looking back at equation 2a - equation 1a:
+
+We had:
+
+-8x -2y +2z = -16
+
+And equation 3a -
+equation 1a:
+
+-6x -6z =-30, which simplified to x + z=5.
+
+So, z=5 -x.
+
+Substituting into the first result:
+
+-8x -2y +2*(5 -x)= -16
+
+-8x -2y +10 -2x = -16
+
+-10x -2y +10 =-16
+
+-10x -2y =-26
+
+Divide by -2:
+
+5x + y=13, which is what we had before.
+
+So, that seems correct.
+
+So, y=13 -5x, z=5
+-x.
+
+Substituting into equation 1a:
+
+x² + (13 -5x)^2 + (5 -x)^2 -2*(13 -5x) -4*(5 -x) =13
+
+Which led to 27x² -126x +135=0
+
+Which factors as 3x² -14x +15=0
+
+Using quadratic formula: x=(14 ±sqrt(196-180))/6=(14±4)/6
+
+So, x=18/6=3 or x=10/6=5/3.
+
+So, only x=3 is integer.
+
+Thus, only one integer
+solution.
+
+Therefore, the fourth vertex is at (3,-2,2).
+
+I think that's the answer.
+
+**Final Answer**
+The coordinates of the fourth vertex are \boxed{(3, -2, 2)}.
+</think>
+
+To find the coordinates of the fourth vertex of a regular tetrahedron given three vertices at points \( A = (0,1,2) \), \( B =
+(4,2,1) \), and \( C = (3,1,5) \), we need to ensure that the fourth vertex \( D = (x, y, z) \) is equidistant from \( A \), \( B \), and \( C \).
+
+1. Calculate the distances between the given points:
+   - \( AB = AC = BC = 3\sqrt{2} \)
+
+2. Set up the distance equations for the fourth vertex \( D
+\):
+   - \( \sqrt{x^2 + (y - 1)^2 + (z - 2)^2} = 3\sqrt{2} \)
+   - \( \sqrt{(x - 4)^2 + (y - 2)^2 + (z - 1)^2} = 3\sqrt{2} \)
+   - \( \sqrt{(x - 3)^2 + (y - 1)^2 + (z - 5)^2} = 3\sqrt{2} \)
+
+3. Square each equation to eliminate the square roots:
+   - \( x^2 + (y - 1)^2 + (z - 2)^2 = 18 \)
+   - \( (x
+- 4)^2 + (y - 2)^2 + (z - 1)^2 = 18 \)
+   - \( (x - 3)^2 + (y - 1)^2 + (z - 5)^2 = 18 \)
+
+4. Expand and simplify the equations:
+   - Equation 1: \( x^2 + y^2 + z^2 - 2y - 4z = 13 \)
+   - Equation 2: \( x^2 + y^2 + z^2 - 8x - 4y - 2z = -3 \)
+   - Equation 3: \( x^2 + y^2 + z^2 - 6x - 2y - 10z = -17
+\)
+
+5. Subtract pairs of equations to eliminate \( x^2 + y^2 + z^2 \):
+   - Subtract Equation 1 from Equation 2: \( -8x - 2y + 2z = -16 \)
+   - Subtract Equation 1 from Equation 3: \( -6x - 6z = -30 \)
+
+6. Solve the resulting system of equations:
+   - From \( x + z = 5 \) and \( 5x + y = 13 \), we
+get \( z = 5 - x \) and \( y = 13 - 5x \).
+
+7. Substitute \( y \) and \( z \) back into the first simplified equation:
+   - Solve the quadratic equation \( 27x^2 - 126x + 135 = 0 \) to find \( x = 3 \) (since \( x = \frac{5}{3} \) is not an integer).
+
+8. Determine \( y \) and \( z \) using \( x = 3
+\):
+   - \( y = 13 - 5(3) = -2 \)
+   - \( z = 5 - 3 = 2 \)
+
+Thus, the coordinates of the fourth vertex are \(\boxed{(3, -2, 2)}\).
+----------------------------------------
+critique: 
+
+Plan Approved. You may start solving the problem.
+----------------------------------------
+critique: 
+
+To solve the problem, the assistant followed a systematic approach to find the fourth vertex of a regular tetrahedron given three vertices. The plan was structured, logical, and complete. The key steps included calculating distances, setting up equations, solving the system of equations, and
+verifying the solution. The final answer was correctly derived and verified.
+
+Plan Approved. You may start solving the problem.
+----------------------------------------
+assistant: <think>
+Alright, so I've got this problem about a regular tetrahedron, and I need to find the coordinates of the fourth vertex. Let me break it down step by step.
+
+First off, a regular tetrahedron is a three-dimensional shape where all four faces are equilateral triangles. That means all edges are
+of equal length. So, if I have three vertices, I need to find the fourth one such that it's equidistant from all three given vertices.
+
+The given points are:
+- \( A = (0, 1, 2) \)
+- \( B = (4, 2, 1) \)
+- \( C = (3, 1, 5) \)
+
+I need to find the fourth vertex \( D = (x, y, z) \).
+
+**Step 1: Calculate
+the distances between the given points**
+
+Since it's a regular tetrahedron, the distance between any two vertices should be the same. Let me calculate the distances between \( A \), \( B \), and \( C \).
+
+- Distance \( AB \):
+  \[
+  AB = \sqrt{(4 - 0)^2 + (2 - 1)^2 + (1 - 2)^2} = \sqrt{16 + 1 + 1} =
+\sqrt{18} = 3\sqrt{2}
+  \]
+
+- Distance \( AC \):
+  \[
+  AC = \sqrt{(3 - 0)^2 + (1 - 1)^2 + (5 - 2)^2} = \sqrt{9 + 0 + 9} = \sqrt{18} = 3\sqrt{2}
+  \]
+
+- Distance \( BC \):
+  \[
+  BC = \sqrt{(3 - 4)^2 + (1 - 2)^2 + (5 - 1)^2} = \sqrt{1 + 1 + 16} = \sqrt{18} = 3\sqrt{2}
+  \]
+
+Okay, so all distances
+are equal, which makes sense for a regular tetrahedron.
+
+**Step 2: Set up the equations for the fourth vertex**
+
+The fourth vertex \( D = (x, y, z) \) should be equidistant from \( A \), \( B \), and \( C \). So, the distances \( AD \), \( BD \), and \( CD \) should all equal \( 3\sqrt{2} \).
+
+Let's
+write those distance equations:
+
+1. \( AD = 3\sqrt{2} \):
+   \[
+   \sqrt{(x - 0)^2 + (y - 1)^2 + (z - 2)^2} = 3\sqrt{2}
+   \]
+   Squaring both sides:
+   \[
+   x^2 + (y - 1)^2 + (z - 2)^2 = 18 \quad \text{(Equation 1)}
+   \]
+
+2. \( BD = 3\sqrt{2} \):
+   \[
+   \sqrt{(x - 4)^2 + (y - 2)^2 + (z - 1)^2}
+= 3\sqrt{2}
+   \]
+   Squaring both sides:
+   \[
+   (x - 4)^2 + (y - 2)^2 + (z - 1)^2 = 18 \quad \text{(Equation 2)}
+   \]
+
+3. \( CD = 3\sqrt{2} \):
+   \[
+   \sqrt{(x - 3)^2 + (y - 1)^2 + (z - 5)^2} = 3\sqrt{2}
+   \]
+   Squaring both sides:
+   \[
+   (x - 3)^2 + (y - 1)^2 + (z - 5)^2 = 18 \quad
+\text{(Equation 3)}
+   \]
+
+**Step 3: Expand the equations**
+
+Let's expand each equation to simplify them.
+
+- **Equation 1**:
+  \[
+  x^2 + (y^2 - 2y + 1) + (z^2 - 4z + 4) = 18
+  \]
+  Simplify:
+  \[
+  x^2 + y^2 + z^2 - 2y - 4z + 5 = 18
+  \]
+  \[
+  x^2 + y^2 + z^2 - 2y - 4z = 13 \quad \text{(Simplified
+Equation 1)}
+  \]
+
+- **Equation 2**:
+  \[
+  (x^2 - 8x + 16) + (y^2 - 4y + 4) + (z^2 - 2z + 1) = 18
+  \]
+  Simplify:
+  \[
+  x^2 + y^2 + z^2 - 8x - 4y - 2z + 21 = 18
+  \]
+  \[
+  x^2 + y^2 + z^2 - 8x - 4y - 2z = -3 \quad \text{(Simplified Equation 2)}
+  \]
+
+- **Equation 3**:
+  \[
+  (x^2 - 6x + 9) +
+(y^2 - 2y + 1) + (z^2 - 10z + 25) = 18
+  \]
+  Simplify:
+  \[
+  x^2 + y^2 + z^2 - 6x - 2y - 10z + 35 = 18
+  \]
+  \[
+  x^2 + y^2 + z^2 - 6x - 2y - 10z = -17 \quad \text{(Simplified Equation 3)}
+  \]
+
+**Step 4: Subtract equations to eliminate variables**
+
+Now, I'll subtract pairs of these simplified
+equations to eliminate \( x^2 + y^2 + z^2 \).
+
+- **Subtract Simplified Equation 1 from Simplified Equation 2**:
+  \[
+  (x^2 + y^2 + z^2 - 8x - 4y - 2z) - (x^2 + y^2 + z^2 - 2y - 4z) = -3 - 13
+  \]
+  Simplify:
+  \[
+  -8x - 2y + 2z = -16
+  \]
+  Divide the entire equation by 2:
+  \[
+  -4x - y + z = -8
+\quad \text{(Equation 4)}
+  \]
+
+- **Subtract Simplified Equation 1 from Simplified Equation 3**:
+  \[
+  (x^2 + y^2 + z^2 - 6x - 2y - 10z) - (x^2 + y^2 + z^2 - 2y - 4z) = -17 - 13
+  \]
+  Simplify:
+  \[
+  -6x - 6z = -30
+  \]
+  Divide the entire equation by 6:
+  \[
+  -x - z = -5 \quad \Rightarrow \quad
+x + z = 5 \quad \text{(Equation 5)}
+  \]
+
+**Step 5: Solve the system of equations**
+
+Now, I have two equations:
+
+1. \( -4x - y + z = -8 \) (Equation 4)
+2. \( x + z = 5 \) (Equation 5)
+
+From Equation 5, I can express \( z \) in terms of \( x \):
+\[
+z = 5 - x
+\]
+
+Now, substitute \( z = 5 - x \) into
+Equation 4:
+\[
+-4x - y + (5 - x) = -8
+\]
+Simplify:
+\[
+-5x - y + 5 = -8
+\]
+\[
+-5x - y = -13
+\]
+\[
+5x + y = 13 \quad \text{(Equation 6)}
+\]
+
+Now, I have:
+- \( z = 5 - x \) (from Equation 5)
+- \( y = 13 - 5x \) (from Equation 6)
+
+**Step 6: Substitute back into one of the original distance
+equations**
+
+Let's substitute \( y = 13 - 5x \) and \( z = 5 - x \) into Simplified Equation 1:
+\[
+x^2 + y^2 + z^2 - 2y - 4z = 13
+\]
+Substitute:
+\[
+x^2 + (13 - 5x)^2 + (5 - x)^2 - 2(13 - 5x) - 4(5 - x) = 13
+\]
+
+Let's expand each term:
+
+1. \( (13 - 5x)^2 = 169 - 130x + 25x^2 \)
+2. \( (5 - x)^2 = 25 -
+10x + x^2 \)
+3. \( -2(13 - 5x) = -26 + 10x \)
+4. \( -4(5 - x) = -20 + 4x \)
+
+Now, plug these back into the equation:
+\[
+x^2 + (169 - 130x + 25x^2) + (25 - 10x + x^2) + (-26 + 10x) + (-20 + 4x) = 13
+\]
+
+Combine like terms:
+- \( x^2 + 25x^2 + x^2 = 27x^2 \)
+- \( -130x - 10x + 10x + 4x = -126x \)
+- \(
+169 + 25 - 26 - 20 = 148 \)
+
+So, the equation becomes:
+\[
+27x^2 - 126x + 148 = 13
+\]
+Subtract 13 from both sides:
+\[
+27x^2 - 126x + 135 = 0
+\]
+
+**Step 7: Solve the quadratic equation**
+
+Let's solve:
+\[
+27x^2 - 126x + 135 = 0
+\]
+
+Divide the entire equation by 9 to simplify:
+\[
+3x^2 - 14x + 15 =
+0
+\]
+
+Now, use the quadratic formula:
+\[
+x = \frac{14 \pm \sqrt{(-14)^2 - 4 \cdot 3 \cdot 15}}{2 \cdot 3}
+\]
+\[
+x = \frac{14 \pm \sqrt{196 - 180}}{6}
+\]
+\[
+x = \frac{14 \pm \sqrt{16}}{6}
+\]
+\[
+x = \frac{14 \pm 4}{6}
+\]
+
+So, two possible solutions:
+1. \( x = \frac{14 + 4}{6} = \frac{18}{6} = 3 \)
+2.
+\( x = \frac{14 - 4}{6} = \frac{10}{6} = \frac{5}{3} \)
+
+Since the coordinates of the fourth vertex must be integers, \( x = \frac{5}{3} \) is not acceptable. Therefore, \( x = 3 \).
+
+**Step 8: Find \( y \) and \( z \)**
+
+Using \( x = 3 \):
+\[
+y = 13 - 5x = 13 - 15 = -2
+\]
+\[
+z = 5 - x = 5 - 3 =
+2
+\]
+
+**Step 9: Verify the solution**
+
+Let's verify that \( D = (3, -2, 2) \) is equidistant from \( A \), \( B \), and \( C \).
+
+- Distance \( AD \):
+  \[
+  \sqrt{(3 - 0)^2 + (-2 - 1)^2 + (2 - 2)^2} = \sqrt{9 + 9 + 0} = \sqrt{18} = 3\sqrt{2}
+  \]
+
+- Distance \( BD \):
+  \[
+  \sqrt{(3 - 4)^2 + (-2 -
+2)^2 + (2 - 1)^2} = \sqrt{1 + 16 + 1} = \sqrt{18} = 3\sqrt{2}
+  \]
+
+- Distance \( CD \):
+  \[
+  \sqrt{(3 - 3)^2 + (-2 - 1)^2 + (2 - 5)^2} = \sqrt{0 + 9 + 9} = \sqrt{18} = 3\sqrt{2}
+  \]
+
+All distances are equal, confirming that \( D = (3, -2, 2) \) is indeed the fourth vertex of the regular
+tetrahedron.
+
+**Final Answer**
+The coordinates of the fourth vertex are \(\boxed{(3, -2, 2)}\).
+</think>
+
+To find the coordinates of the fourth vertex \( D = (x, y, z) \) of a regular tetrahedron given the vertices \( A = (0, 1, 2) \), \( B = (4, 2, 1) \), and \( C = (3, 1, 5) \), we need to ensure
+that \( D \) is equidistant from \( A \), \( B \), and \( C \).
+
+1. **Calculate the distances between the given points:**
+   - \( AB = AC = BC = 3\sqrt{2} \)
+
+2. **Set up the distance equations for the fourth vertex \( D \):**
+   - \( \sqrt{x^2 + (y - 1)^2 + (z - 2)^2} = 3\sqrt{2} \)
+   - \(
+\sqrt{(x - 4)^2 + (y - 2)^2 + (z - 1)^2} = 3\sqrt{2} \)
+   - \( \sqrt{(x - 3)^2 + (y - 1)^2 + (z - 5)^2} = 3\sqrt{2} \)
+
+3. **Square each equation to eliminate the square roots:**
+   - \( x^2 + (y - 1)^2 + (z - 2)^2 = 18 \)
+   - \( (x - 4)^2 + (y - 2)^2 + (z - 1)^2 = 18 \)
+   - \( (x - 3)^2 + (y -
+1)^2 + (z - 5)^2 = 18 \)
+
+4. **Expand and simplify the equations:**
+   - \( x^2 + y^2 + z^2 - 2y - 4z = 13 \)
+   - \( x^2 + y^2 + z^2 - 8x - 4y - 2z = -3 \)
+   - \( x^2 + y^2 + z^2 - 6x - 2y - 10z = -17 \)
+
+5. **Subtract pairs of equations to eliminate \( x^2 + y^2 + z^2 \):**
+   - \( -8x - 2y + 2z
+= -16 \)
+   - \( -6x - 6z = -30 \)
+
+6. **Solve the resulting system of equations:**
+   - From \( x + z = 5 \) and \( 5x + y = 13 \), we get \( z = 5 - x \) and \( y = 13 - 5x \).
+
+7. **Substitute \( y \) and \( z \) back into the first simplified equation:**
+   - Solve the quadratic equation \(
+27x^2 - 126x + 135 = 0 \) to find \( x = 3 \) (since \( x = \frac{5}{3} \) is not an integer).
+
+8. **Determine \( y \) and \( z \) using \( x = 3 \):**
+   - \( y = 13 - 5(3) = -2 \)
+   - \( z = 5 - 3 = 2 \)
+
+Thus, the coordinates of the fourth vertex are \(\boxed{(3, -2, 2)}\).
+----------------------------------------
+Solution: The side length of the regular tetrahedron is the distance between $(0,1,2)$ and $(4,2,1),$ which is
+\[\sqrt{(0 - 4)^2 + (1 - 2)^2 + (2 - 1)^2} = \sqrt{18} = 3 \sqrt{2}.\]So if $(x,y,z)$ is the fourth vertex, with integer coordinates, then
+\begin{align*}
+x^2 + (y - 1)^2 + (z - 2)^2 &= 18, \\
+(x - 4)^2 + (y - 2)^2 + (z - 1)^2 &= 18, \\
+(x - 3)^2 + (y - 1)^2 + (z - 5)^2 &= 18.
+\end{align*}Subtracting the first and third equations, we get $6x + 6z - 30 = 0$, so $x + z = 5,$ which means $z = 5 - x.$  Subtracting the first and second equation, we get $8x + 2y - 2z - 16 = 0,$ so
+\[y = z - 4x + 8 = (5 - x) - 4x + 8 = 13 - 5x.\]Substituting into the first equation, we get
+\[x^2 + (12 - 5x)^2 + (3 - x)^2 = 18.\]This simplifies to $27x^2 - 126x + 135 = 0,$ which factors as $9(x - 3)(3x - 5) = 0.$  Since $x$ is an integer, $x = 3.$  Then $y = -2$ and $z = 2.$  Thus, the fourth vertex is $\boxed{(3,-2,2)}.$
