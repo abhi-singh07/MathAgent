@@ -15,7 +15,7 @@ conda env create -f environment.yml
 ![image](https://github.com/user-attachments/assets/df7d731d-563e-4d1a-8505-936050807626)
 
 
-## Run MathChat 
+## Run MathAgent
 - Use `--categories` to select category to run, and `--samples_per_category` for number of samples. The problems are randomly selected from level-5 difficulty. 
     
     ID : Category Name      
