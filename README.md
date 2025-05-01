@@ -31,7 +31,7 @@ conda env create -f environment.yml
 ```python
 python main.py -ptype default --folder ./default --categories 0 1 3 4 5 6 --samples_per_category 1
 ```
-Note: `default` is the default prompt for MathChat, other choices are `v3.9python` and `two_tools`.
+Note: `default` is the default prompt for MathAgent, other choices are `v3.9python` and `two_tools`.
 
 
 - Test on all problems from each category (except geometry):
